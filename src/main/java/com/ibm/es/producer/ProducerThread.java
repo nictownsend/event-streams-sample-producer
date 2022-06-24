@@ -44,8 +44,13 @@ public class ProducerThread extends Thread {
     try {
       Properties props = Utils.loadProps(producer.getConfigFilePath());
       final KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+      int throughput = this.producer.getThroughput();
       while (!Thread.interrupted()) {
         producer.send(new ProducerRecord<>(this.producer.getTopic(), generator.generatePayload()));
+        if(throughput > 0) {
+          int pause = Math.round((60*1000)/throughput);
+          this.thread.wait(pause);
+        }
       }
     } catch (Exception error) {
       logger.error("Failed to execute", error);

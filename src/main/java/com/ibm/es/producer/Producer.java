@@ -243,4 +243,8 @@ public class Producer {
   public String getTemplateFilePath() {
     return this.templateFilePath;
   }
+
+  public int getThroughput() {
+    return this.throughput;
+  }
 }
