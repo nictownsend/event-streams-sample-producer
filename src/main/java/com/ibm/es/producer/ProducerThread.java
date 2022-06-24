@@ -15,56 +15,38 @@
  */
 package com.ibm.es.producer;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import org.apache.kafka.tools.ProducerPerformance;
+import java.util.Properties;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.common.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class ProducerThread extends Thread {
 
+  private final PayloadGenerator generator;
   private Thread thread;
-  private String threadName;
-  private Producer producer;
+  private final String threadName;
+  private final Producer producer;
 
-  private static Logger logger = LoggerFactory.getLogger(ProducerThread.class);
+  private static final Logger logger = LoggerFactory.getLogger(ProducerThread.class);
 
-  ProducerThread(ThreadGroup threadGroup, String threadName, Producer producer) {
+  ProducerThread(
+      ThreadGroup threadGroup, String threadName, Producer producer, PayloadGenerator generator) {
     super(threadGroup, threadName);
     this.threadName = threadName;
     this.producer = producer;
+    this.generator = generator;
   }
 
   @Override
   public void run() {
-    List<String> argumentsList =
-        new ArrayList<>(
-            Arrays.asList(
-                "--topic", producer.getTopic(),
-                "--num-records", String.valueOf(producer.getNumRecords()),
-                "--throughput", String.valueOf(producer.getThroughput()),
-                "--producer.config", producer.getConfigFilePath()));
-
-    if (producer.shouldPrintMetrics()) {
-      argumentsList.add("--print-metrics");
-    }
-
-    if ("".equals(producer.getPayloadFilePath())) {
-      argumentsList.add("--record-size");
-      argumentsList.add(String.valueOf(producer.getRecordSize()));
-    } else {
-      argumentsList.add("--payload-file");
-      argumentsList.add(producer.getPayloadFilePath());
-
-      argumentsList.add("--payload-delimiter");
-      argumentsList.add(producer.getPayloadDelimiter());
-    }
-
     try {
-      String[] arguments = new String[argumentsList.size()];
-      arguments = argumentsList.toArray(arguments);
-      ProducerPerformance.main(arguments);
+      Properties props = Utils.loadProps(producer.getConfigFilePath());
+      final KafkaProducer<String, String> producer = new KafkaProducer<>(props);
+      while (!Thread.interrupted()) {
+        producer.send(new ProducerRecord<>(this.producer.getTopic(), generator.generatePayload()));
+      }
     } catch (Exception error) {
       logger.error("Failed to execute", error);
     }

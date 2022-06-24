@@ -19,8 +19,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 import java.util.ResourceBundle;
-import net.sourceforge.argparse4j.*;
+import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentGroup;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
@@ -35,63 +36,39 @@ import org.slf4j.LoggerFactory;
 
 public class Producer {
 
-  private static Logger logger = LoggerFactory.getLogger(Producer.class);
-  private static ResourceBundle producerTranslations =
+  private static final Logger logger = LoggerFactory.getLogger(Producer.class);
+  private static final ResourceBundle producerTranslations =
       ResourceBundle.getBundle("MessageBundle", Locale.getDefault());
 
-  // default values used by the tool
-  private static final String DEFAULT_PRODUCER_CONFIG = "producer.config";
-  private static final String DEFAULT_SIZE = "";
-  private static final Long DEFAULT_NUM_RECORDS = 60000L;
   private static final Integer DEFAULT_THROUGHPUT = -1;
-  private static final String DEFAULT_PAYLOAD_DELIMITER = "\\n";
-  private static final Boolean DEFAULT_PRINT_METRICS = false;
   private static final Integer DEFAULT_NUMBER_THREADS = 1;
-  private static final Integer DEFAULT_RECORD_SIZE = 100;
-  private static final String DEFAULT_PAYLOAD_FILE = "";
 
-  private String size;
   private String topic;
   private Integer numThreads;
-  private Long numRecords;
   private Integer throughput;
   private String configFilePath;
-  private Integer recordSize;
-  private String payloadFilePath;
-  private Boolean shouldPrintMetrics;
-  private String payloadDelimiter;
+  private String templateFilePath;
 
   public static void main(String[] args) {
     Producer producer = new Producer();
-
     ArgumentParser parser = argParser();
 
     try {
       Namespace res = parser.parseArgs(args);
 
       producer.setTopic(res.getString("topic"));
-      producer.setNumRecords(res.getLong("numRecords"));
-      producer.setRecordSize(res.getInt("recordSize"));
       producer.setThroughput(res.getInt("throughput"));
       producer.setConfigFilePath(res.getString("producerConfigFile"));
-      producer.setPayloadFilePath(res.getString("payloadFile"));
-      producer.setShouldPrintMetrics(res.getBoolean("printMetrics"));
       producer.setNumThreads(res.getInt("numThreads"));
-      producer.setSize(res.getString("size"));
-
-      producer.setPayloadDelimiter(
-          res.getString("payloadDelimiter").equals("\\n")
-              ? "\n"
-              : res.getString("payloadDelimiter"));
-
+      producer.setTemplateFilePath(res.getString("payloadTemplate"));
       overrideArgumentsWithEnvVars(producer);
 
       if (res.getBoolean("genConfig")) {
         try {
-          StringBuilder template =
-              new StringBuilder(IOUtils.resourceToString("/producer.config.template", null));
-
-          FileUtils.writeStringToFile(new File("producer.config"), template.toString(), "UTF-8");
+          FileUtils.writeStringToFile(
+              new File("producer.config"),
+              IOUtils.resourceToString("/producer.config.template", null),
+              "UTF-8");
           System.out.println(producerTranslations.getString("producer.fileGenerated"));
         } catch (IOException exception) {
           System.err.println(producerTranslations.getString("producer.fileGenerationFail"));
@@ -100,9 +77,9 @@ public class Producer {
 
       } else {
         // if one of the required arguments is missing, log and exit.
-        if (producer.getTopic() == null
-            || producer.getConfigFilePath() == null
-            || (producer.getRecordSize() == null && producer.getPayloadFilePath() == null)) {
+        if (Objects.isNull(producer.topic)
+            || Objects.isNull(producer.configFilePath)
+            || Objects.isNull(producer.templateFilePath)) {
           System.out.println(producerTranslations.getString("producer.argsMissing"));
           parser.printHelp();
           Exit.exit(0);
@@ -117,34 +94,16 @@ public class Producer {
           Exit.exit(0);
         } else {
           ThreadGroup producers = new ThreadGroup("Producers");
-          for (int i = 0; i < producer.getNumThreads(); i++) {
-            // if size set, determine the values to use
-            if (!producer.getSize().isEmpty()) {
-              switch (producer.getSize()) {
-                case "small":
-                  producer.setNumRecords(60000L);
-                  producer.setThroughput(1000);
-                  break;
-                case "medium":
-                  producer.setNumRecords(600000L);
-                  producer.setThroughput(10000);
-                  break;
-                case "large":
-                  producer.setNumRecords(6000000L);
-                  producer.setThroughput(100000);
-                  break;
-              }
-            }
-            // if we have a number of threads to run over, divide the work between them
-            producer.numRecords = producer.numRecords / producer.numThreads;
-
+          for (int i = 0; i < producer.numThreads; i++) {
+            PayloadGenerator generator = new PayloadGenerator(producer.getTemplateFilePath());
             ProducerThread producerThread =
-                new ProducerThread(producers, String.format("producer%d", i), producer);
+                new ProducerThread(producers, String.format("producer%d", i), producer, generator);
             producerThread.start();
           }
         }
       }
     } catch (ArgumentParserException error) {
+      error.printStackTrace();
       if (args.length == 0) {
         parser.printHelp();
         Exit.exit(0);
@@ -192,32 +151,10 @@ public class Producer {
         .type(String.class)
         .metavar("CONFIG-FILE")
         .dest("producerConfigFile")
-        .setDefault(DEFAULT_PRODUCER_CONFIG)
         .help(producerTranslations.getString("producer.producerConfigFile.help"));
 
     ArgumentGroup generalConfig =
         parser.addArgumentGroup(producerTranslations.getString("producer.generalConfigSection"));
-
-    generalConfig
-        .addArgument("-s", "--size")
-        .action(Arguments.store())
-        .required(false)
-        .type(String.class)
-        .metavar("SIZE")
-        .dest("size")
-        .choices("small", "medium", "large")
-        .setDefault(DEFAULT_SIZE)
-        .help(producerTranslations.getString("producer.size.help"));
-
-    generalConfig
-        .addArgument("-n", "--num-records")
-        .action(Arguments.store())
-        .required(false)
-        .type(Long.class)
-        .setDefault(DEFAULT_NUM_RECORDS)
-        .metavar("NUM-RECORDS")
-        .dest("numRecords")
-        .help(producerTranslations.getString("producer.numrecords.help"));
 
     generalConfig
         .addArgument("-T", "--throughput")
@@ -227,25 +164,6 @@ public class Producer {
         .metavar("THROUGHPUT")
         .setDefault(DEFAULT_THROUGHPUT)
         .help(producerTranslations.getString("producer.throughput.help"));
-
-    generalConfig
-        .addArgument("-d", "--payload-delimiter")
-        .action(Arguments.store())
-        .required(false)
-        .type(String.class)
-        .metavar("PAYLOAD-DELIMITER")
-        .dest("payloadDelimiter")
-        .setDefault(DEFAULT_PAYLOAD_DELIMITER)
-        .help(producerTranslations.getString("producer.payloadDelimeter.help"));
-
-    generalConfig
-        .addArgument("-m", "--print-metrics")
-        .action(Arguments.storeTrue())
-        .required(false)
-        .type(Arguments.booleanType())
-        .dest("printMetrics")
-        .setDefault(DEFAULT_PRINT_METRICS)
-        .help(producerTranslations.getString("producer.printMetrics.help"));
 
     generalConfig
         .addArgument("-x", "--num-threads")
@@ -263,38 +181,22 @@ public class Producer {
             .description(producerTranslations.getString("producer.payload.options"));
 
     payloadOptions
-        .addArgument("-r", "--record-size")
-        .action(Arguments.store())
-        .required(false)
-        .type(Integer.class)
-        .metavar("RECORD-SIZE")
-        .dest("recordSize")
-        .setDefault(DEFAULT_RECORD_SIZE)
-        .help(producerTranslations.getString("producer.recordSize.help"));
-
-    payloadOptions
-        .addArgument("-f", "--payload-file")
+        .addArgument("-f", "--payload-template-file")
         .action(Arguments.store())
         .required(false)
         .type(String.class)
-        .metavar("PAYLOAD-FILE")
-        .dest("payloadFile")
-        .setDefault(DEFAULT_PAYLOAD_FILE)
-        .help(producerTranslations.getString("producer.payloadFile.help"));
+        .metavar("PAYLOAD-TEMPLATE")
+        .dest("payloadTemplate")
+        .help(producerTranslations.getString("producer.payloadTemplate.help"));
 
     return parser;
   }
 
   private static void overrideArgumentsWithEnvVars(Producer producer) {
     Map<String, String> env = System.getenv();
-    boolean throughputOverridden = false;
-    boolean numRecordsOverridden = false;
 
     if (env.containsKey("ES_TOPIC")) {
       producer.setTopic(env.get("ES_TOPIC"));
-    }
-    if (env.containsKey("ES_RECORD_SIZE")) {
-      producer.setRecordSize(Integer.parseInt(env.get("ES_RECORD_SIZE")));
     }
     if (env.containsKey("ES_NUM_THREADS")) {
       producer.setNumThreads(Integer.parseInt(env.get("ES_NUM_THREADS")));
@@ -302,34 +204,12 @@ public class Producer {
     if (env.containsKey("ES_PRODUCER_CONFIG")) {
       producer.setConfigFilePath(env.get("ES_PRODUCER_CONFIG"));
     }
-    if (env.containsKey("ES_PAYLOAD_FILE")) {
-      producer.setPayloadFilePath(env.get("ES_PAYLOAD_FILE"));
-    }
-    if (env.containsKey("ES_PAYLOAD_DELIMITER")) {
-      producer.setPayloadDelimiter(env.get("ES_PAYLOAD_DELIMITER"));
-    }
-
     if (env.containsKey("ES_THROUGHPUT")) {
       producer.setThroughput(Integer.parseInt(env.get("ES_THROUGHPUT")));
-      throughputOverridden = true;
     }
-    if (env.containsKey("ES_NUM_RECORDS")) {
-      producer.setNumRecords(Long.parseLong(env.get("ES_NUM_RECORDS")));
-      numRecordsOverridden = true;
+    if (env.containsKey("ES_TEMPLATE_FILE_PATH")) {
+      producer.setTemplateFilePath(env.get("ES_TEMPLATE_FILE_PATH"));
     }
-    if (throughputOverridden && numRecordsOverridden) {
-      producer.setSize("");
-    }
-    if ((throughputOverridden && !numRecordsOverridden)
-        || (!throughputOverridden && numRecordsOverridden)) {
-      logger.warn(producerTranslations.getString("producer.envar.warning"));
-    }
-
-    if (env.containsKey("ES_SIZE")) producer.size = env.get("ES_SIZE");
-  }
-
-  public void setSize(String size) {
-    this.size = size;
   }
 
   public void setTopic(String topic) {
@@ -340,10 +220,6 @@ public class Producer {
     this.numThreads = numThreads;
   }
 
-  public void setNumRecords(Long numRecords) {
-    this.numRecords = numRecords;
-  }
-
   public void setThroughput(Integer throughput) {
     this.throughput = throughput;
   }
@@ -352,59 +228,19 @@ public class Producer {
     this.configFilePath = configFilePath;
   }
 
-  public void setRecordSize(Integer recordSize) {
-    this.recordSize = recordSize;
-  }
-
-  public void setPayloadFilePath(String payloadFilePath) {
-    this.payloadFilePath = payloadFilePath;
-  }
-
-  public void setShouldPrintMetrics(Boolean shouldPrintMetrics) {
-    this.shouldPrintMetrics = shouldPrintMetrics;
-  }
-
-  public void setPayloadDelimiter(String payloadDelimiter) {
-    this.payloadDelimiter = payloadDelimiter;
-  }
-
-  public String getSize() {
-    return size;
-  }
-
-  public String getTopic() {
-    return topic;
-  }
-
-  public Integer getNumThreads() {
-    return numThreads;
-  }
-
-  public Long getNumRecords() {
-    return numRecords;
-  }
-
-  public Integer getThroughput() {
-    return throughput;
+  public void setTemplateFilePath(String templateFilePath) {
+    this.templateFilePath = templateFilePath;
   }
 
   public String getConfigFilePath() {
-    return configFilePath;
+    return this.configFilePath;
   }
 
-  public Integer getRecordSize() {
-    return recordSize;
+  public String getTopic() {
+    return this.topic;
   }
 
-  public String getPayloadFilePath() {
-    return payloadFilePath;
-  }
-
-  public Boolean shouldPrintMetrics() {
-    return shouldPrintMetrics;
-  }
-
-  public String getPayloadDelimiter() {
-    return payloadDelimiter;
+  public String getTemplateFilePath() {
+    return this.templateFilePath;
   }
 }
