@@ -1,4 +1,12 @@
 # ignored project files
-/target
-/bin
-.project
+target
+*.project
+*.log
+*.log.*
+*.iml
+.idea
+*.config
+*.dmp
+*.trc
+*.txt
+*.phd

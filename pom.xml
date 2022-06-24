@@ -2,18 +2,27 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.ibm.es</groupId>
-	<artifactId>event-streams-sample-producer</artifactId>
-	<version>1.1.0</version>
+	<groupId>com.ibm.ei</groupId>
+	<artifactId>flink-workload-generator</artifactId>
+	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
-	<name>event-streams-sample-producer</name>
-	<url>https://github.com/IBM/event-streams-sample-producer</url>
+	<name>kafka-sample-runner</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kafka.version>2.5.0</kafka.version>
+        <kafka.version>3.2.0</kafka.version>
+		<handlebars.version>4.3.0</handlebars.version>
+		<faker.version>1.0.2</faker.version>
 	</properties>
+
+
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>jitpack.io</id>-->
+<!--			<url>https://jitpack.io</url>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 
 	<dependencies>
 		<dependency>
@@ -80,16 +89,31 @@
 			<artifactId>fmt-maven-plugin</artifactId>
 			<version>2.5.1</version>
 		</dependency>
+		<dependency>
+			<groupId>com.github.jknack</groupId>
+			<artifactId>handlebars</artifactId>
+			<version>${handlebars.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>${faker.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.5.1</version>
+				<version>3.10.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>11</source>
+					<target>11</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -117,7 +141,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>com.ibm.es.producer.Producer</mainClass>
+									<mainClass>com.ibm.ei.producer.Runner</mainClass>
 								</manifest>
 								<manifestEntries>
 									<Class-Path>.</Class-Path>
@@ -126,7 +150,7 @@
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
-							<finalName>es-producer</finalName>
+							<finalName>flink-workload-generator</finalName>
 							<appendAssemblyId>false</appendAssemblyId>
 						</configuration>
 					</execution>

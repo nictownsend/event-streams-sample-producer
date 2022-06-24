@@ -1,0 +1,45 @@
+apiVersion: flink.apache.org/v1beta1
+kind: FlinkDeployment
+metadata:
+  name: session-cluster
+spec:
+  flinkConfiguration:
+    taskmanager.numberOfTaskSlots: '3'
+    web.cancel.enable: 'true'
+  flinkVersion: v1_15
+  jobManager:
+    replicas: 1
+    resource:
+      cpu: 1
+      memory: 2048m
+  serviceAccount: flink
+  taskManager:
+    resource:
+      cpu: 2
+      memory: 4096m
+  podTemplate:
+    spec:
+      containers:
+        - name: flink-main-container
+          volumeMounts:
+            - name: flink-files
+              mountPath: /opt/flink/files
+          image: flink
+      volumes:
+        - name: flink-files
+          persistentVolumeClaim:
+            claimName: flink-files
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: flink-ui
+  labels:
+    app: session-cluster
+spec:
+  to:
+    kind: Service
+    name: session-cluster-rest
+    weight: 100
+  port:
+    targetPort: rest
