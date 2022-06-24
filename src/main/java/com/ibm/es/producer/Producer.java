@@ -17,10 +17,12 @@ package com.ibm.es.producer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import net.sourceforge.argparse4j.ArgumentParsers;
 import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentGroup;
@@ -52,6 +54,23 @@ public class Producer {
   public static void main(String[] args) {
     Producer producer = new Producer();
     ArgumentParser parser = argParser();
+    List<ProducerThread> producers = List.of();
+
+    Thread gracefulEnd =
+        new Thread(
+            () -> {
+              final Integer totalCount = producers
+                      .stream()
+                      .map(
+                              t -> {
+                                logger.info("{} : sent {} messages", t.getName(), t.messageCount());
+                                return t.messageCount();
+                              })
+                      .collect(Collectors.summingInt(Integer::intValue));
+              logger.info("Sent {} total messages", totalCount);
+            });
+
+    Runtime.getRuntime().addShutdownHook(gracefulEnd);
 
     try {
       Namespace res = parser.parseArgs(args);
@@ -93,12 +112,14 @@ public class Producer {
           parser.printHelp();
           Exit.exit(0);
         } else {
-          ThreadGroup producers = new ThreadGroup("Producers");
+          ThreadGroup producersGroup = new ThreadGroup("Producers");
           for (int i = 0; i < producer.numThreads; i++) {
             PayloadGenerator generator = new PayloadGenerator(producer.getTemplateFilePath());
             ProducerThread producerThread =
-                new ProducerThread(producers, String.format("producer%d", i), producer, generator);
+                new ProducerThread(
+                    producersGroup, String.format("producer%d", i), producer, generator);
             producerThread.start();
+            producers.add(producerThread);
           }
         }
       }

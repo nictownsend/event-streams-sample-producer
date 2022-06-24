@@ -28,6 +28,7 @@ public class ProducerThread extends Thread {
   private Thread thread;
   private final String threadName;
   private final Producer producer;
+  private int totalMessages = 0;
 
   private static final Logger logger = LoggerFactory.getLogger(ProducerThread.class);
 
@@ -47,9 +48,10 @@ public class ProducerThread extends Thread {
       int throughput = this.producer.getThroughput();
       while (!Thread.interrupted()) {
         producer.send(new ProducerRecord<>(this.producer.getTopic(), generator.generatePayload()));
-        if(throughput > 0) {
-          int pause = Math.round((60*1000)/throughput);
-          this.thread.wait(pause);
+        this.totalMessages += 1;
+        if (throughput > 0) {
+          int pause = Math.round(1000 / throughput);
+          Thread.sleep(pause);
         }
       }
     } catch (Exception error) {
@@ -63,5 +65,9 @@ public class ProducerThread extends Thread {
       thread = new Thread(this, threadName);
       thread.start();
     }
+  }
+
+  public int messageCount() {
+    return this.totalMessages;
   }
 }

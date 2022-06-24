@@ -29,7 +29,7 @@ public class PayloadGenerator {
 
   public PayloadGenerator(String payloadFilePath) {
     this.payloadFilePath = payloadFilePath;
-    config = DefaultConfig.build().setGenerateMinimal(false).setNonRequiredPropertyChance(2f).get();
+    config = DefaultConfig.build().setGenerateMinimal(false).get();
     schemaStore = new SchemaStore(true);
     TemplateLoader loader = new FileTemplateLoader("", "");
     handlebars = new Handlebars(loader);
