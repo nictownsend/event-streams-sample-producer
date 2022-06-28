@@ -13,9 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ibm.es.producer;
+package com.ibm.ei.producer;
 
+import java.io.IOException;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.atomic.AtomicInteger;
+import net.jimblackler.jsongenerator.JsonGeneratorException;
+import net.jimblackler.jsonschemafriend.GenerationException;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.utils.Utils;
@@ -25,12 +30,12 @@ import org.slf4j.LoggerFactory;
 public class ProducerThread extends Thread {
 
   private final PayloadGenerator generator;
-  private Thread thread;
   private final String threadName;
   private final Producer producer;
-  private int totalMessages = 0;
+  private AtomicInteger numberRecordsSent = new AtomicInteger(0);
 
   private static final Logger logger = LoggerFactory.getLogger(ProducerThread.class);
+  private AtomicBoolean running = new AtomicBoolean(false);
 
   ProducerThread(
       ThreadGroup threadGroup, String threadName, Producer producer, PayloadGenerator generator) {
@@ -42,32 +47,52 @@ public class ProducerThread extends Thread {
 
   @Override
   public void run() {
+    running.set(true);
+    Properties props = null;
     try {
-      Properties props = Utils.loadProps(producer.getConfigFilePath());
+      props = Utils.loadProps(producer.getConfigFilePath());
       final KafkaProducer<String, String> producer = new KafkaProducer<>(props);
       int throughput = this.producer.getThroughput();
-      while (!Thread.interrupted()) {
+      int maxMessages = this.producer.getProducerRecordCount();
+
+      while (running.get()) {
         producer.send(new ProducerRecord<>(this.producer.getTopic(), generator.generatePayload()));
-        this.totalMessages += 1;
+        final int recordCount = this.numberRecordsSent.addAndGet(1);
+
+        if (recordCount >= maxMessages) {
+          running.set(false);
+          continue;
+        }
+
         if (throughput > 0) {
           int pause = Math.round(1000 / throughput);
-          Thread.sleep(pause);
+          try {
+            Thread.sleep(pause);
+          } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+          }
         }
       }
-    } catch (Exception error) {
-      logger.error("Failed to execute", error);
+    } catch (IOException | JsonGeneratorException | GenerationException e) {
+      logger.error("Failed to send record", e);
     }
+
+    logger.info("Sent {} records", this.numberRecordsSent);
   }
 
   @Override
   public void start() {
-    if (thread == null) {
-      thread = new Thread(this, threadName);
-      thread.start();
-    }
+    logger.info("Started producer thread");
+    super.start();
   }
 
   public int messageCount() {
-    return this.totalMessages;
+    return this.numberRecordsSent.get();
+  }
+
+  @Override
+  public void interrupt() {
+    running.set(false);
+    super.interrupt();
   }
 }

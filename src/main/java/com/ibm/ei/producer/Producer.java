@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.ibm.es.producer;
+package com.ibm.ei.producer;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -44,30 +45,39 @@ public class Producer {
 
   private static final Integer DEFAULT_THROUGHPUT = -1;
   private static final Integer DEFAULT_NUMBER_THREADS = 1;
+  private static final String DEFAULT_PRODUCER_CONFIG = "producer.config";
+  private static final Integer DEFAULT_NUM_RECORDS = 100;
+
+  private static final String TOPIC = "topic";
+  private static final String PRODUCER_CONFIG = "producerConfig";
+  private static final String THROUGHPUT = "throughput";
+  private static final String NUM_THREADS = "numThreads";
+  private static final String PAYLOAD_TEMPLATE = "payloadTemplate";
+  private static final String NUM_RECORDS = "numRecords";
+  private static final String GEN_CONFIG = "genConfig";
 
   private String topic;
   private Integer numThreads;
   private Integer throughput;
   private String configFilePath;
   private String templateFilePath;
+  private Integer numRecords;
 
   public static void main(String[] args) {
     Producer producer = new Producer();
     ArgumentParser parser = argParser();
-    List<ProducerThread> producers = List.of();
+    List<ProducerThread> producers = new ArrayList<>();
 
     Thread gracefulEnd =
         new Thread(
             () -> {
-              final Integer totalCount = producers
+              final Integer totalCount =
+                  producers
                       .stream()
-                      .map(
-                              t -> {
-                                logger.info("{} : sent {} messages", t.getName(), t.messageCount());
-                                return t.messageCount();
-                              })
+                      .map(ProducerThread::messageCount)
                       .collect(Collectors.summingInt(Integer::intValue));
-              logger.info("Sent {} total messages", totalCount);
+              logger.info(
+                  "Sent {} records in total across {} producers", totalCount, producers.size());
             });
 
     Runtime.getRuntime().addShutdownHook(gracefulEnd);
@@ -75,11 +85,12 @@ public class Producer {
     try {
       Namespace res = parser.parseArgs(args);
 
-      producer.setTopic(res.getString("topic"));
-      producer.setThroughput(res.getInt("throughput"));
-      producer.setConfigFilePath(res.getString("producerConfigFile"));
-      producer.setNumThreads(res.getInt("numThreads"));
-      producer.setTemplateFilePath(res.getString("payloadTemplate"));
+      producer.setTopic(res.getString(TOPIC));
+      producer.setThroughput(res.getInt(THROUGHPUT));
+      producer.setConfigFilePath(res.getString(PRODUCER_CONFIG));
+      producer.setNumThreads(res.getInt(NUM_THREADS));
+      producer.setPayloadTemplateFilePath(res.getString(PAYLOAD_TEMPLATE));
+      producer.setNumRecords(res.getInt(NUM_RECORDS));
       overrideArgumentsWithEnvVars(producer);
 
       if (res.getBoolean("genConfig")) {
@@ -113,6 +124,7 @@ public class Producer {
           Exit.exit(0);
         } else {
           ThreadGroup producersGroup = new ThreadGroup("Producers");
+          logger.info("Starting {} producers", producer.numThreads);
           for (int i = 0; i < producer.numThreads; i++) {
             PayloadGenerator generator = new PayloadGenerator(producer.getTemplateFilePath());
             ProducerThread producerThread =
@@ -137,7 +149,7 @@ public class Producer {
 
   private static ArgumentParser argParser() {
     ArgumentParser parser =
-        ArgumentParsers.newFor("es-producer")
+        ArgumentParsers.newFor("kafka-sample-producer")
             .singleMetavar(true)
             .build()
             .defaultHelp(true)
@@ -151,7 +163,7 @@ public class Producer {
         .action(Arguments.storeTrue())
         .required(false)
         .type(Arguments.booleanType())
-        .dest("genConfig")
+        .dest(GEN_CONFIG)
         .help(producerTranslations.getString("producer.genConfig.help"));
 
     ArgumentGroup requiredParams =
@@ -162,7 +174,7 @@ public class Producer {
         .action(Arguments.store())
         .required(false)
         .type(String.class)
-        .metavar("TOPIC")
+        .dest(TOPIC)
         .help(producerTranslations.getString("producer.topic.help"));
 
     requiredParams
@@ -170,8 +182,8 @@ public class Producer {
         .action(Arguments.store())
         .required(false)
         .type(String.class)
-        .metavar("CONFIG-FILE")
-        .dest("producerConfigFile")
+        .setDefault(DEFAULT_PRODUCER_CONFIG)
+        .dest(PRODUCER_CONFIG)
         .help(producerTranslations.getString("producer.producerConfigFile.help"));
 
     ArgumentGroup generalConfig =
@@ -182,7 +194,7 @@ public class Producer {
         .action(Arguments.store())
         .required(false)
         .type(Integer.class)
-        .metavar("THROUGHPUT")
+        .dest(THROUGHPUT)
         .setDefault(DEFAULT_THROUGHPUT)
         .help(producerTranslations.getString("producer.throughput.help"));
 
@@ -191,10 +203,18 @@ public class Producer {
         .action(Arguments.store())
         .required(false)
         .type(Integer.class)
-        .metavar("NUM_THREADS")
-        .dest("numThreads")
+        .dest(NUM_THREADS)
         .setDefault(DEFAULT_NUMBER_THREADS)
         .help(producerTranslations.getString("producer.numThreads.help"));
+
+    generalConfig
+        .addArgument("-n", "--num-records")
+        .action(Arguments.store())
+        .required(false)
+        .type(Integer.class)
+        .dest(NUM_RECORDS)
+        .setDefault(DEFAULT_NUM_RECORDS)
+        .help(producerTranslations.getString("producer.numRecords.help"));
 
     MutuallyExclusiveGroup payloadOptions =
         parser
@@ -202,12 +222,11 @@ public class Producer {
             .description(producerTranslations.getString("producer.payload.options"));
 
     payloadOptions
-        .addArgument("-f", "--payload-template-file")
+        .addArgument("-f", "--payload-template")
         .action(Arguments.store())
         .required(false)
         .type(String.class)
-        .metavar("PAYLOAD-TEMPLATE")
-        .dest("payloadTemplate")
+        .dest(PAYLOAD_TEMPLATE)
         .help(producerTranslations.getString("producer.payloadTemplate.help"));
 
     return parser;
@@ -216,20 +235,23 @@ public class Producer {
   private static void overrideArgumentsWithEnvVars(Producer producer) {
     Map<String, String> env = System.getenv();
 
-    if (env.containsKey("ES_TOPIC")) {
-      producer.setTopic(env.get("ES_TOPIC"));
+    if (env.containsKey("TOPIC")) {
+      producer.setTopic(env.get("TOPIC"));
     }
-    if (env.containsKey("ES_NUM_THREADS")) {
-      producer.setNumThreads(Integer.parseInt(env.get("ES_NUM_THREADS")));
+    if (env.containsKey("NUM_THREADS")) {
+      producer.setNumThreads(Integer.parseInt(env.get("NUM_THREADS")));
     }
-    if (env.containsKey("ES_PRODUCER_CONFIG")) {
-      producer.setConfigFilePath(env.get("ES_PRODUCER_CONFIG"));
+    if (env.containsKey("PRODUCER_CONFIG")) {
+      producer.setConfigFilePath(env.get("PRODUCER_CONFIG"));
     }
-    if (env.containsKey("ES_THROUGHPUT")) {
-      producer.setThroughput(Integer.parseInt(env.get("ES_THROUGHPUT")));
+    if (env.containsKey("THROUGHPUT")) {
+      producer.setThroughput(Integer.parseInt(env.get("THROUGHPUT")));
     }
-    if (env.containsKey("ES_TEMPLATE_FILE_PATH")) {
-      producer.setTemplateFilePath(env.get("ES_TEMPLATE_FILE_PATH"));
+    if (env.containsKey("PAYLOAD_TEMPLATE")) {
+      producer.setPayloadTemplateFilePath(env.get("PAYLOAD_TEMPLATE"));
+    }
+    if (env.containsKey("NUM_RECORDS")) {
+      producer.setNumRecords(Integer.parseInt(env.get("NUM_RECORDS")));
     }
   }
 
@@ -249,8 +271,12 @@ public class Producer {
     this.configFilePath = configFilePath;
   }
 
-  public void setTemplateFilePath(String templateFilePath) {
+  public void setPayloadTemplateFilePath(String templateFilePath) {
     this.templateFilePath = templateFilePath;
+  }
+
+  private void setNumRecords(Integer numRecords) {
+    this.numRecords = numRecords;
   }
 
   public String getConfigFilePath() {
@@ -267,5 +293,9 @@ public class Producer {
 
   public int getThroughput() {
     return this.throughput;
+  }
+
+  public int getProducerRecordCount() {
+    return Math.round(this.numRecords / this.numThreads);
   }
 }

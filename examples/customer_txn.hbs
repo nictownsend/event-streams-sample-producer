@@ -2,16 +2,16 @@
   "type": "object",
   "properties": {
     "date": {
-      "enum": ["{{faker-date this "21-06-2022" "24-06-2022"}}"]
+      "enum": ["{{fake-date this "21-06-2022" "24-06-2022"}}"]
     },
     "url" : {
         "enum": ["/home", "/closure", "/join-us"]
     },
     "customer_id": {
-        "enum": ["{{faker-int this 0 50}}"]
+        "enum": ["{{fake-int this 0 50}}"]
     },
     "txn_id": {
-        "enum": ["{{faker-uuid this}}"]
+        "enum": ["{{fake-uuid this}}"]
     }
   },
   "required": ["date", "url", "customer_id", "txn_id"]

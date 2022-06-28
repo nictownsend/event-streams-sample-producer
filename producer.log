@@ -1,0 +1,3582 @@
+[2022-06-27 17:12:57,762] INFO Sent 0 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:14:47,122] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:14:47,147] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:14:47,148] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:14:47,149] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [host.docker.internal:9093]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:14:48,350] WARN Couldn't resolve server host.docker.internal:9093 from bootstrap.servers as DNS resolution failed for host.docker.internal (org.apache.kafka.clients.ClientUtils)
+[2022-06-27 17:14:48,350] INFO [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 0 ms. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-06-27 17:14:48,351] INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:14:48,351] INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:14:48,351] INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:14:48,352] INFO App info kafka.producer for producer-1 unregistered (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:14:48,354] INFO Sent 0 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:15:20,425] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:15:20,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:20,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:20,450] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [host.docker.internal:9093]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:20,517] WARN Couldn't resolve server host.docker.internal:9093 from bootstrap.servers as DNS resolution failed for host.docker.internal (org.apache.kafka.clients.ClientUtils)
+[2022-06-27 17:15:20,517] INFO [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 0 ms. (org.apache.kafka.clients.producer.KafkaProducer)
+[2022-06-27 17:15:20,518] INFO Metrics scheduler closed (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:15:20,518] INFO Closing reporter org.apache.kafka.common.metrics.JmxReporter (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:15:20,518] INFO Metrics reporters closed (org.apache.kafka.common.metrics.Metrics)
+[2022-06-27 17:15:20,519] INFO App info kafka.producer for producer-1 unregistered (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:15:20,524] INFO Sent 0 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:15:57,840] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:15:57,861] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:57,861] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:57,863] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:57,967] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:15:57,968] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:15:57,968] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:15:57,968] INFO Kafka startTimeMs: 1656346557967 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:15:57,971] ERROR Failed to send record (com.ibm.ei.producer.ProducerThread)
+java.io.FileNotFoundException: /examples/customer_txn.hbs
+	at com.github.jknack.handlebars.io.URLTemplateLoader.sourceAt(URLTemplateLoader.java:70)
+	at com.github.jknack.handlebars.Handlebars.compile(Handlebars.java:500)
+	at com.github.jknack.handlebars.Handlebars.compile(Handlebars.java:481)
+	at com.ibm.ei.producer.PayloadGenerator.generatePayload(PayloadGenerator.java:77)
+	at com.ibm.ei.producer.ProducerThread.run(ProducerThread.java:60)
+	at java.base/java.lang.Thread.run(Thread.java:866)
+[2022-06-27 17:15:57,972] INFO Sent 0 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:15:57,974] INFO Sent 0 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:16:44,522] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:16:44,546] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:16:44,546] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:16:44,547] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:16:44,647] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:16:44,648] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:16:44,648] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:16:44,648] INFO Kafka startTimeMs: 1656346604647 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:16:45,024] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:16:45,283] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:16:54,781] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:16:54,785] INFO Sent 10 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:17:23,735] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:17:23,757] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:17:23,757] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:17:23,758] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:17:23,857] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:17:23,858] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:17:23,858] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:17:23,858] INFO Kafka startTimeMs: 1656346643857 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:17:24,219] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:17:24,485] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:17:37,177] INFO Sent 100 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:17:37,179] INFO Sent 100 total messages (com.ibm.ei.producer.Producer)
+[2022-06-27 17:18:48,941] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:18:48,963] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:18:48,964] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:18:48,965] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:18:49,059] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:18:49,060] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:18:49,061] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:18:49,061] INFO Kafka startTimeMs: 1656346729060 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:18:49,408] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:18:49,661] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:19:02,222] INFO Sent 100 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:19:02,224] INFO Sent 100 records in total across 1 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:19:37,897] INFO Starting 1 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:19:37,957] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:19:37,977] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:19:37,977] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:19:37,978] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:19:38,072] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:19:38,073] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:19:38,074] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:19:38,074] INFO Kafka startTimeMs: 1656346778072 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:19:38,425] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:19:38,679] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:19:46,981] INFO Sent 64 records in total across 1 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:20:40,715] INFO Starting 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:20:40,793] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,795] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,796] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,798] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,799] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,800] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,801] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,802] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,803] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,804] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,825] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,824] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,825] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-2
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-9
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-3
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-4
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-5
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-8
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-6
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-10
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,826] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-7
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,964] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,965] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,965] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,965] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,965] INFO Kafka startTimeMs: 1656346840964 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,967] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,967] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,967] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,967] INFO Kafka startTimeMs: 1656346840965 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:40,983] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:40,999] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,001] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,005] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,005] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,005] INFO Kafka startTimeMs: 1656346840967 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,008] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,010] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,012] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,012] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,012] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,012] INFO Kafka startTimeMs: 1656346841012 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,014] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,014] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,014] INFO Kafka startTimeMs: 1656346840983 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,014] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,015] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,015] INFO Kafka startTimeMs: 1656346840999 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] INFO Kafka startTimeMs: 1656346841001 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:20:41,016] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,016] INFO Kafka startTimeMs: 1656346841008 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,017] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,017] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,017] INFO Kafka startTimeMs: 1656346841010 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,018] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,018] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,018] INFO Kafka startTimeMs: 1656346841016 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-10] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-4] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,410] INFO [Producer clientId=producer-5] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-8] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-7] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-3] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,409] INFO [Producer clientId=producer-2] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,410] INFO [Producer clientId=producer-9] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,410] INFO [Producer clientId=producer-6] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-2] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-8] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-10] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-7] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-5] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-6] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-4] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,833] INFO [Producer clientId=producer-9] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,834] INFO [Producer clientId=producer-3] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:41,835] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:20:42,426] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,437] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,445] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,450] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,451] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,453] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,454] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,455] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,456] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,457] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:20:42,458] INFO Sent 100 records in total across 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:27:05,233] INFO Starting 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:27:05,304] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,305] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,307] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,308] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,308] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,309] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,310] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,310] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,311] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,312] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:05,315] INFO Sent 0 records in total across 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:27:29,352] INFO Starting 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:27:29,419] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,422] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,423] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,425] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,426] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,426] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,427] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,428] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,428] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,429] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,450] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,450] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,450] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,450] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,449] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,450] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-7
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-9
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-3
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-6
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-5
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-10
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-4
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-8
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,451] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-2
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,640] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,640] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,640] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,640] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,641] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,641] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,641] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,641] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,641] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,642] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,642] INFO Kafka startTimeMs: 1656347249640 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,642] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,642] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:27:29,646] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,646] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,646] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,647] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,648] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,648] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,648] INFO Kafka startTimeMs: 1656347249642 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,649] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,649] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,649] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka startTimeMs: 1656347249642 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,650] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,651] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,651] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,651] INFO Kafka startTimeMs: 1656347249641 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,651] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,651] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:29,652] INFO Kafka startTimeMs: 1656347249640 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-5] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-2] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-7] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-9] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-8] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-10] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-4] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-6] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,099] INFO [Producer clientId=producer-3] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,511] INFO [Producer clientId=producer-4] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,511] INFO [Producer clientId=producer-9] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,511] INFO [Producer clientId=producer-7] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,511] INFO [Producer clientId=producer-6] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,512] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,512] INFO [Producer clientId=producer-3] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,512] INFO [Producer clientId=producer-10] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,512] INFO [Producer clientId=producer-5] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,513] INFO [Producer clientId=producer-8] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:30,513] INFO [Producer clientId=producer-2] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:27:31,111] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,130] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,137] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,148] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,152] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,155] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,155] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,156] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,157] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,158] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:27:31,159] INFO Sent 100 records in total across 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:28:09,960] INFO Starting 10 producers (com.ibm.ei.producer.Producer)
+[2022-06-27 17:28:10,025] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,028] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,029] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,031] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,032] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,033] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,034] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,035] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,036] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,037] INFO Started producer thread (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] INFO Idempotence will be disabled because acks is set to 0, not set to 'all'. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,053] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,054] WARN Idempotence will be disabled because max.in.flight.requests.per.connection is set to 1000, which is greater than 5. Please note that in v4.0.0 and onward, this will become an error. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-9
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-10
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-7
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-8
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-3
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-4
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-5
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-2
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,055] INFO ProducerConfig values: 
+	acks = 0
+	batch.size = 1000
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10000
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-6
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 0
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 1000
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2, TLSv1.3]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+ (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,189] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,190] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,190] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,190] INFO Kafka startTimeMs: 1656347290189 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,194] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,194] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,194] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,194] INFO Kafka startTimeMs: 1656347290194 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,195] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,195] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,196] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,196] INFO Kafka startTimeMs: 1656347290195 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,208] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,208] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,208] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,208] INFO Kafka startTimeMs: 1656347290208 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,218] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,218] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,218] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,218] INFO Kafka startTimeMs: 1656347290218 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,227] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,227] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,228] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,235] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,236] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,236] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,236] INFO Kafka startTimeMs: 1656347290227 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,237] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,237] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,237] INFO Kafka startTimeMs: 1656347290227 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka startTimeMs: 1656347290235 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,240] INFO Kafka startTimeMs: 1656347290228 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,243] WARN The configuration 'ssl.protocol' was supplied but isn't a known config. (org.apache.kafka.clients.producer.ProducerConfig)
+[2022-06-27 17:28:10,243] INFO Kafka version: 3.2.0 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,243] INFO Kafka commitId: 38103ffaa962ef50 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,244] INFO Kafka startTimeMs: 1656347290243 (org.apache.kafka.common.utils.AppInfoParser)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-2] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-9] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-8] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-3] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-5] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-10] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-7] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,649] INFO [Producer clientId=producer-1] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,650] INFO [Producer clientId=producer-6] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:10,650] INFO [Producer clientId=producer-4] Cluster ID: jklbJsNYSAKzoKTQ8V3aHw (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,062] INFO [Producer clientId=producer-4] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,062] INFO [Producer clientId=producer-1] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,062] INFO [Producer clientId=producer-5] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,062] INFO [Producer clientId=producer-10] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,062] INFO [Producer clientId=producer-9] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,063] INFO [Producer clientId=producer-2] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,063] INFO [Producer clientId=producer-7] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,063] INFO [Producer clientId=producer-6] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,064] INFO [Producer clientId=producer-3] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:11,064] INFO [Producer clientId=producer-8] Resetting the last seen epoch of partition test-0 to 0 since the associated topicId changed from null to oD9AU8ANRpW1LfMRPDJgGQ (org.apache.kafka.clients.Metadata)
+[2022-06-27 17:28:20,497] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,498] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,499] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,513] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,544] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,550] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,580] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,581] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,582] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,584] INFO Sent 10 records (com.ibm.ei.producer.ProducerThread)
+[2022-06-27 17:28:20,586] INFO Sent 100 records in total across 10 producers (com.ibm.ei.producer.Producer)

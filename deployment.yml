@@ -1,0 +1,80 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: payload-template
+  namespace: flink-env
+data:
+  payload.hbs: |-
+    {
+      "type": "object",
+      "properties": {
+        "date": {
+          "enum": ["{{fake-date this "21-06-2022" "24-06-2022"}}"]
+        },
+        "url" : {
+          "enum": ["/home", "/closure", "/join-us"]
+        },
+        "customer_id": {
+          "enum": ["{{fake-int this 0 50}}"]
+        },
+        "txn_id": {
+          "enum": ["{{fake-uuid this}}"]
+        }
+      },
+      "required": ["date", "url", "customer_id", "txn_id"]
+    }
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: producer-config
+  namespace: flink-env
+data:
+  producer.config: |-
+    bootstrap.servers=my-cluster-kafka-bootstrap.flink-env.svc:9092
+    key.serializer=org.apache.kafka.common.serialization.StringSerializer
+    value.serializer=org.apache.kafka.common.serialization.StringSerializer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: customer-txn
+  namespace: flink-env
+spec:
+  selector:
+    matchLabels:
+      app: customer-txn
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: customer-txn
+    spec:
+      containers:
+        - name: producer
+          volumeMounts:
+            - name: payload-template
+              mountPath: /runtime/payload
+            - name: producer-config
+              mountPath: /runtime/config
+          env:
+            - name: TOPIC
+              value: test
+            - name: NUM_THREADS
+              value: "100"
+            - name: PAYLOAD_TEMPLATE
+              value: /runtime/payload/payload.hbs
+            - name: NUM_RECORDS
+              value: "10000"
+            - name: PRODUCER_CONFIG
+              value: /runtime/config/producer.config
+          image: >-
+            quay.io/nictownsend/kafka-sample-producer:1.4
+      volumes:
+        - name: payload-template
+          configMap:
+            name: payload-template
+        - name: producer-config
+          configMap:
+            name: producer-config
+---

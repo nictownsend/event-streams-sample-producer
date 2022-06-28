@@ -1,4 +1,4 @@
-package com.ibm.es.producer;
+package com.ibm.ei.producer;
 
 import com.github.javafaker.Faker;
 import com.github.jknack.handlebars.Handlebars;
@@ -35,22 +35,25 @@ public class PayloadGenerator {
     handlebars = new Handlebars(loader);
 
     handlebars.registerHelper(
-        "faker-date",
+        "fake-date",
         (o, options) -> {
           String start = options.param(0);
           String end = options.param(1);
           SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
-          try {
-            final Date generated = faker.date().between(date.parse(start), date.parse(end));
-            return new Timestamp(generated.getTime());
-          } catch (ParseException e) {
-            e.printStackTrace();
-            return "";
-          }
+          return timestamp(start, end, date);
         });
 
     handlebars.registerHelper(
-        "faker-int",
+        "fake-datetime",
+        (o, options) -> {
+          String start = options.param(0);
+          String end = options.param(1);
+          SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss");
+          return timestamp(start, end, date);
+        });
+
+    handlebars.registerHelper(
+        "fake-int",
         (o, options) -> {
           Integer min = options.param(0);
           Integer max = options.param(1);
@@ -58,7 +61,7 @@ public class PayloadGenerator {
         });
 
     handlebars.registerHelper(
-        "faker-double",
+        "fake-double",
         (o, options) -> {
           Integer min = options.param(0);
           Integer max = options.param(1);
@@ -66,10 +69,21 @@ public class PayloadGenerator {
           return faker.number().randomDouble(decimals, min, max);
         });
 
-    handlebars.registerHelper("faker-uuid", (o, options) -> faker.idNumber().valid());
-    handlebars.registerHelper("faker-firstName", (o, options) -> faker.name().firstName());
-    handlebars.registerHelper("faker-lastName", (o, options) -> faker.name().lastName());
-    handlebars.registerHelper("faker-fullName", (o, options) -> faker.name().fullName());
+    handlebars.registerHelper("fake-uuid", (o, options) -> faker.idNumber().valid());
+    handlebars.registerHelper("fake-firstName", (o, options) -> faker.name().firstName());
+    handlebars.registerHelper("fake-lastName", (o, options) -> faker.name().lastName());
+    handlebars.registerHelper("fake-fullName", (o, options) -> faker.name().fullName());
+  }
+
+  private Timestamp timestamp(String start, String end, SimpleDateFormat format) {
+
+    try {
+      final Date generated = faker.date().between(format.parse(start), format.parse(end));
+      return new Timestamp(generated.getTime());
+    } catch (ParseException e) {
+      e.printStackTrace();
+      return null;
+    }
   }
 
   public String generatePayload() throws JsonGeneratorException, GenerationException, IOException {
