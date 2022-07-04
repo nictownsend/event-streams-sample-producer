@@ -1,10 +1,10 @@
-# kafka-sample-producer
+# kafka-sample-runner
 
-A sample workload producer for generating test data from a JSON schema on a Kafka topic.
+A sample workload runner for generating test data from a JSON schema on a Kafka topic.
 
-Available as a Docker image at https://quay.io/repository/nictownsend/kafka-sample-producer
+Available as a Docker image at https://quay.io/repository/nictownsend/kafka-sample-runner
 
-This producer takes a JSON Schema and will generate random messages that conform to the schema.
+This runner takes a JSON Schema and will generate random messages that conform to the schema.
 
 ## Building
 
@@ -13,17 +13,17 @@ This producer takes a JSON Schema and will generate random messages that conform
 
    `mvn clean install`
 
-- This will create a`kakfa-sample-producer.jar` file inside the `target` directory.
+- This will create a`kakfa-sample-runner.jar` file inside the `target` directory.
 
 ## Producer Configuration
 
-Run `java -jar target/kakfa-sample-producer.jar --gen-config` to generate `producer.config`
+Run `java -jar target/kakfa-sample-runner.jar --gen-config` to generate `runner.config`
 
 The following configuration options might be required:
 
 | Attribute                             | Description                                                                                                            |
 |  ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `bootstrap.servers`                     | The addressed used by the producer application to connect to Kafka. |
+| `bootstrap.servers`                     | The addressed used by the runner application to connect to Kafka. |
 | `ssl.truststore.location`       | The location (path and filename) of the Kafka certificate. |
 | `ssl.truststore.password`       | The password of the Kafka certificate. |
 | `security.protocol`             | The security protocol to use for connections. e.g `SSL`, `SASL_SSL` |
@@ -49,8 +49,9 @@ A new JSON schema will be generated for each payload - so for example, you can u
 | field type | helper | notes |
 | --- | --- | --- |
 | uuid | `{{fake-uuid this}}` |  |
-| timestamp |`{{fake-date this <after> <before>}}` | Date format: `dd-MM-yyyy` |
-|  |`{{fake-datetime this <after> <before>}}` |Datetime format: `dd-M-yyyy'T'HH:mm:ss` |
+| timestamp |`{{fake-date-random this <after> <before>}}` | Random timestamp between the two dates. Date format: `dd-MM-yyyy` |
+|  |`{{fake-datetime-random this <after> <before>}}` | Random time between the two dates. Datetime format: `dd-M-yyyy'T'HH:mm:ss` |
+| | `{{fake-datetime-sequential this}}`| Next timestamp within the time range. If no time range supplied, increments time by 1s | 
 | int |`{{fake-int this <min> <max>}}` | |
 | double | `{{fake-double this <min> <max>}}`| | 
 | first name |`{{fake-firstName this}}` | |
@@ -86,7 +87,7 @@ A new JSON schema will be generated for each payload - so for example, you can u
 
 ## Running
 
-```java -jar target/kakfa-sample-producer.jar <options>```
+```java -jar target/kakfa-sample-runner.jar <options>```
 
 ###  Options
 
@@ -96,10 +97,13 @@ A new JSON schema will be generated for each payload - so for example, you can u
 | Payload Template      | -f        | --payload-template    | `string` | File to read the message payloads from. This works only for UTF-8 encoded text files. Payloads will be read from this  file and a payload will be randomly selected when sending messages. |   |
 | Throughput            | -T        | --throughput          | `integer`| Throttle maximum message throughput to *approximately* *THROUGHPUT* messages per second. -1 means as fast as possible                     | `-1`             |                                                                         | `loadtest`       |
 | Num Records           | -n        | --num-records         | `integer`| The total number of messages to be sent (across all threads)     
-| Producer Config       | -c        | --producer-config     | `string` | Path to producer configuration file                                                                                                       | `producer.config`|
-| Num Threads           | -x        | --num-threads         | `integer`| The number of producer threads to run                                                                                                     | `1`              |
+| Producer Config       | -c        | --runner-config     | `string` | Path to runner configuration file                                                                                                       | `runner.config`|
+| Num Threads           | -x        | --num-threads         | `integer`| The number of runner threads to run                                                                                                     | `1`              |
+| Start timestamp       | -s        | --start-timestamp          | `string`    | Timestamp to start generating messages from                                                                                |                  |
+| End timestamp         | -e        | --end-timestamp          | `string`    | Timestamp to generate messages until. Increments evenly for each message generated.                                                                      |                  |
+| Batch mode            | -b        | --batch        | `boolean`    | Write to console instead of Kafka.                                                                           |                  |
 | Help                  | -h        | --help                | `N/A`    | Lists the available parameters                                                                                                            |                  |
-| Gen Config            | -g        | --gen-config          | `N/A`    | Generates the configuration file required to run the tool                                                                                 |                  |
+| Gen Config            | -g        | --gen-config          | `boolean`    | Generates the configuration file required to run the tool                                                                                 |                  |
 
 
 ### Environment Overrides for Docker/Kubernetes

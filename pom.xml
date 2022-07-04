@@ -3,11 +3,11 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ibm.ei</groupId>
-	<artifactId>kafka-sample-producer</artifactId>
+	<artifactId>kafka-sample-runner</artifactId>
 	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
-	<name>kafka-sample-producer</name>
+	<name>kafka-sample-runner</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -111,6 +111,11 @@
 			<artifactId>javafaker</artifactId>
 			<version>${faker.version}</version>
 		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -148,7 +153,7 @@
 						<configuration>
 							<archive>
 								<manifest>
-									<mainClass>com.ibm.ei.producer.Producer</mainClass>
+									<mainClass>com.ibm.ei.runner.ProducerConfig</mainClass>
 								</manifest>
 								<manifestEntries>
 									<Class-Path>.</Class-Path>
@@ -157,7 +162,7 @@
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
-							<finalName>kafka-sample-producer</finalName>
+							<finalName>kafka-sample-runner</finalName>
 							<appendAssemblyId>false</appendAssemblyId>
 						</configuration>
 					</execution>

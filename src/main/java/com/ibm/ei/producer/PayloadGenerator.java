@@ -10,7 +10,11 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 import java.util.Random;
+
+import com.ibm.ei.producer.config.PayloadConfig;
+import com.ibm.ei.utils.FakeDate;
 import net.jimblackler.jsongenerator.Configuration;
 import net.jimblackler.jsongenerator.DefaultConfig;
 import net.jimblackler.jsongenerator.Generator;
@@ -18,24 +22,33 @@ import net.jimblackler.jsongenerator.JsonGeneratorException;
 import net.jimblackler.jsonschemafriend.GenerationException;
 import net.jimblackler.jsonschemafriend.Schema;
 import net.jimblackler.jsonschemafriend.SchemaStore;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class PayloadGenerator {
 
+  private static final Logger logger = LoggerFactory.getLogger(PayloadGenerator.class);
   private final Handlebars handlebars;
   private final Faker faker = new Faker();
-  private final String payloadFilePath;
+  private final PayloadConfig config;
   private final SchemaStore schemaStore;
-  private final Configuration config;
+  private final FakeDate startFrom;
+  private final Generator generator;
 
-  public PayloadGenerator(String payloadFilePath) {
-    this.payloadFilePath = payloadFilePath;
-    config = DefaultConfig.build().setGenerateMinimal(false).get();
-    schemaStore = new SchemaStore(true);
+  public PayloadGenerator(PayloadConfig config, FakeDate startFrom) throws GenerationException {
+    this.config = config;
+    this.schemaStore = new SchemaStore(false);
+    this.startFrom = startFrom;
+
+    Configuration generatorConfig = DefaultConfig.build().setGenerateMinimal(false).get();
+    this.generator = new Generator(generatorConfig, schemaStore, new Random());
+
     TemplateLoader loader = new FileTemplateLoader("", "");
-    handlebars = new Handlebars(loader);
+    this.handlebars = new Handlebars(loader);
 
     handlebars.registerHelper(
-        "fake-date",
+        "fake-date-random",
         (o, options) -> {
           String start = options.param(0);
           String end = options.param(1);
@@ -44,13 +57,17 @@ public class PayloadGenerator {
         });
 
     handlebars.registerHelper(
-        "fake-datetime",
+        "fake-datetime-random",
         (o, options) -> {
           String start = options.param(0);
           String end = options.param(1);
           SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss");
           return timestamp(start, end, date);
         });
+
+    handlebars.registerHelper(
+        "fake-datetime-sequential",
+        (o, options) -> startFrom.getTime());
 
     handlebars.registerHelper(
         "fake-int",
@@ -75,6 +92,7 @@ public class PayloadGenerator {
     handlebars.registerHelper("fake-fullName", (o, options) -> faker.name().fullName());
   }
 
+
   private Timestamp timestamp(String start, String end, SimpleDateFormat format) {
 
     try {
@@ -88,11 +106,11 @@ public class PayloadGenerator {
 
   public String generatePayload() throws JsonGeneratorException, GenerationException, IOException {
 
-    Template template = handlebars.compile(payloadFilePath);
+    Template template = handlebars.compile(this.config.getTemplateFilePath());
     final String schema = template.apply(null);
     Schema loadedSchema = schemaStore.loadSchemaJson(schema);
-    Generator generator = new Generator(config, schemaStore, new Random());
     final Object generated = generator.generate(loadedSchema, 10);
-    return generated.toString();
+    String result = new JSONObject((Map) generated).toString();
+    return result;
   }
 }

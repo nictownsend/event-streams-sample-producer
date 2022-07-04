@@ -16,11 +16,14 @@
 package com.ibm.ei.producer;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import net.jimblackler.jsongenerator.JsonGeneratorException;
-import net.jimblackler.jsonschemafriend.GenerationException;
+
+import com.ibm.ei.producer.config.PayloadConfig;
+import com.ibm.ei.producer.config.ProducerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.utils.Utils;
@@ -29,40 +32,48 @@ import org.slf4j.LoggerFactory;
 
 public class ProducerThread extends Thread {
 
-  private final PayloadGenerator generator;
-  private final String threadName;
-  private final Producer producer;
+  private final LinkedBlockingQueue<String> messageQueue;
+  private final ProducerConfig producerConfig;
+  private final PayloadConfig payloadConfig;
   private AtomicInteger numberRecordsSent = new AtomicInteger(0);
 
   private static final Logger logger = LoggerFactory.getLogger(ProducerThread.class);
   private AtomicBoolean running = new AtomicBoolean(false);
 
   ProducerThread(
-      ThreadGroup threadGroup, String threadName, Producer producer, PayloadGenerator generator) {
+      ThreadGroup threadGroup,
+      String threadName,
+      ProducerConfig producerConfig,
+      PayloadConfig payloadConfig,
+      LinkedBlockingQueue<String> messages) {
     super(threadGroup, threadName);
-    this.threadName = threadName;
-    this.producer = producer;
-    this.generator = generator;
+    this.messageQueue = messages;
+    this.producerConfig = producerConfig;
+    this.payloadConfig = payloadConfig;
   }
 
   @Override
   public void run() {
     running.set(true);
-    Properties props = null;
     try {
-      props = Utils.loadProps(producer.getConfigFilePath());
+      Properties props = Utils.loadProps(this.producerConfig.getConfigFilePath());
       final KafkaProducer<String, String> producer = new KafkaProducer<>(props);
-      int throughput = this.producer.getThroughput();
-      int maxMessages = this.producer.getProducerRecordCount();
+      int throughput = this.producerConfig.getThroughput();
 
       while (running.get()) {
-        producer.send(new ProducerRecord<>(this.producer.getTopic(), generator.generatePayload()));
         final int recordCount = this.numberRecordsSent.addAndGet(1);
-
-        if (recordCount >= maxMessages) {
+        if (recordCount > payloadConfig.getNumRecords() / producerConfig.getNumThreads()) {
           running.set(false);
           continue;
         }
+
+        final String payload = this.messageQueue.poll();
+        if (Objects.isNull(payload)) {
+          running.set(false);
+          continue;
+        }
+
+        producer.send(new ProducerRecord<>(this.producerConfig.getTopic(), payload));
 
         if (throughput > 0) {
           int pause = Math.round(1000 / throughput);
@@ -73,7 +84,7 @@ public class ProducerThread extends Thread {
           }
         }
       }
-    } catch (IOException | JsonGeneratorException | GenerationException e) {
+    } catch (IOException e) {
       logger.error("Failed to send record", e);
     }
 

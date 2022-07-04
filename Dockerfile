@@ -1,5 +1,8 @@
 FROM registry.access.redhat.com/ubi8/openjdk-11:1.13-1.1655306377
+USER root
+RUN mkdir /temp
 WORKDIR /opt/ibm
-COPY target/kafka-sample-producer.jar .
-CMD mkdir /temp
-CMD java -Djava.io.tmpdir=/temp -jar kafka-sample-producer.jar
+COPY target/kafka-sample-runner.jar .
+RUN chgrp -R 0 /temp && chmod -R g+rwX /temp
+USER 185
+CMD java -Djava.io.tmpdir=/temp -jar kafka-sample-runner.jar

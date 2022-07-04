@@ -1,18 +1,18 @@
 {
   "type": "object",
   "properties": {
-    "date": {
-      "enum": ["{{fake-date this "21-06-2022" "24-06-2022"}}"]
+    "ts": {
+       "enum": ["{{fake-datetime-sequential this}}"]
     },
     "url" : {
-        "enum": ["/home", "/closure", "/join-us"]
+      "enum": ["/home", "/closure", "/join-us"]
     },
     "customer_id": {
-        "enum": ["{{fake-int this 0 50}}"]
+      "enum": ["{{fake-int this 0 50}}"]
     },
     "txn_id": {
-        "enum": ["{{fake-uuid this}}"]
+      "enum": ["{{fake-uuid this}}"]
     }
   },
-  "required": ["date", "url", "customer_id", "txn_id"]
+  "required": ["ts", "url", "customer_id", "txn_id"]
 }

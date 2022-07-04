@@ -1,0 +1,32 @@
+apiVersion: flink.apache.org/v1beta1
+kind: FlinkDeployment
+metadata:
+  name: session-cluster
+spec:
+  flinkConfiguration:
+    taskmanager.numberOfTaskSlots: '3'
+    web.cancel.enable: 'true'
+  flinkVersion: v1_15
+  image: 'flink:1.15'
+  jobManager:
+    replicas: 1
+    resource:
+      cpu: 1
+      memory: 2048m
+  serviceAccount: flink
+  taskManager:
+    resource:
+      cpu: 2
+      memory: 4096m
+  podTemplate:
+    spec:
+      volumes:
+        - name: flink-output
+          persistentVolumeClaim:
+            claimName: flink-input
+      containers:
+        # Do not change the main container name
+        - name: flink-main-container
+          volumeMounts:
+            - name: flink-input
+              mountPath: /opt/flink/files
