@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flink-sql-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flink-sql
+  template:
+    metadata:
+      labels:
+        app: flink-sql
+    spec:
+      containers:
+      - args:
+        - while true; do sleep 30; done;
+        command:
+        - /bin/bash
+        - -c
+        - --
+        image: flink:1.15.0
+        imagePullPolicy: IfNotPresent
+        name: flink
+        volumeMounts:
+        - mountPath: /opt/flink/connectors
+          name: cache-volume
+        - mountPath: /opt/flink/conf
+          name: flink-config-volume
+        - mountPath: /opt/flink/files
+          name: flink-files
+      volumes:
+      - emptyDir: {}
+        name: cache-volume
+      - configMap:
+          defaultMode: 420
+          items:
+          - key: flink-conf.yaml
+            path: flink-conf.yaml
+          name: flink-sql-client
+        name: flink-config-volume
+      - name: flink-files
+        persistentVolumeClaim:
+          claimName: flink-input-rwx

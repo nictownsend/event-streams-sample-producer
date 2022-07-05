@@ -15,169 +15,154 @@
  */
 package com.ibm.ei.producer;
 
+import static com.ibm.ei.utils.CLIArguments.BATCH;
+import static com.ibm.ei.utils.CLIArguments.GEN_CONFIG;
+
 import com.ibm.ei.producer.config.PayloadConfig;
 import com.ibm.ei.producer.config.ProducerConfig;
-import com.ibm.ei.utils.Arguments;
-import net.jimblackler.jsongenerator.JsonGeneratorException;
-import net.jimblackler.jsonschemafriend.GenerationException;
-import net.sourceforge.argparse4j.ArgumentParsers;
-import net.sourceforge.argparse4j.inf.ArgumentGroup;
-import net.sourceforge.argparse4j.inf.ArgumentParser;
-import net.sourceforge.argparse4j.inf.ArgumentParserException;
-import net.sourceforge.argparse4j.inf.MutuallyExclusiveGroup;
-import net.sourceforge.argparse4j.inf.Namespace;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ibm.ei.utils.CLIArguments;
+import com.ibm.ei.utils.FakeDate;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.atomic.AtomicReference;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
-import static com.ibm.ei.utils.Arguments.BATCH;
-import static com.ibm.ei.utils.Arguments.GEN_CONFIG;
+import net.sourceforge.argparse4j.inf.ArgumentParser;
+import net.sourceforge.argparse4j.inf.ArgumentParserException;
+import net.sourceforge.argparse4j.inf.Namespace;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Runner {
 
-  private static final Logger logger = LoggerFactory.getLogger(Runner.class);
-  private static final ResourceBundle translations =
-      ResourceBundle.getBundle("MessageBundle", Locale.getDefault());
+    private static final Logger logger = LoggerFactory.getLogger(Runner.class);
+    private static final ResourceBundle translations =
+            ResourceBundle.getBundle("MessageBundle", Locale.getDefault());
 
-  public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-    ArgumentParser parser = Arguments.argParser();
-    List<ProducerThread> producers = new ArrayList<>();
+        ArgumentParser parser = CLIArguments.argParser();
+        List<ProducerThread> producers = new ArrayList<>();
 
-    Thread gracefulEnd =
-        new Thread(
-            () -> {
-              final Integer totalCount =
-                  producers.stream()
-                      .map(ProducerThread::messageCount)
-                      .mapToInt(Integer::intValue)
-                      .sum();
-              logger.info(
-                  "Sent {} records in total across {} producers", totalCount, producers.size());
-            });
+        Thread gracefulEnd =
+                new Thread(
+                        () -> {
+                            final Integer totalCount =
+                                    producers
+                                            .stream()
+                                            .map(ProducerThread::messageCount)
+                                            .mapToInt(Integer::intValue)
+                                            .sum();
+                            logger.info(
+                                    "Sent {} records in total across {} producers", totalCount, producers.size());
+                        });
 
-    Runtime.getRuntime().addShutdownHook(gracefulEnd);
+        Runtime.getRuntime().addShutdownHook(gracefulEnd);
 
-    try {
-      Namespace ns = parser.parseArgs(args);
-
-      ProducerConfig producerConfig = ProducerConfig.createProducerConfig(ns);
-      producerConfig.overrideWithEnvVars(System.getenv());
-
-      PayloadConfig payloadConfig = PayloadConfig.createPayloadConfig(ns);
-      payloadConfig.overrideWithEnvVars(System.getenv());
-
-      if (ns.getBoolean(GEN_CONFIG)) {
         try {
-          FileUtils.writeStringToFile(
-              new File("runner.config"),
-              IOUtils.resourceToString("/producer.config.template", null),
-              "UTF-8");
-          logger.info(translations.getString("runner.fileGenerated"));
-        } catch (IOException exception) {
-          logger.error(translations.getString("runner.fileGenerationFail"), exception);
+            Namespace ns = parser.parseArgs(args);
+
+            ProducerConfig producerConfig = ProducerConfig.createProducerConfig(ns);
+            producerConfig.overrideWithEnvVars(System.getenv());
+
+            PayloadConfig payloadConfig = PayloadConfig.createPayloadConfig(ns);
+            payloadConfig.overrideWithEnvVars(System.getenv());
+
+            if (ns.getBoolean(GEN_CONFIG)) {
+                try {
+                    FileUtils.writeStringToFile(
+                            new File("runner.config"),
+                            IOUtils.resourceToString("/producer.config.template", null),
+                            "UTF-8");
+                    logger.info(translations.getString("runner.fileGenerated"));
+                } catch (IOException exception) {
+                    logger.error(translations.getString("runner.fileGenerationFail"), exception);
+                }
+                System.exit(0);
+            }
+
+            // if one of the required arguments is missing, log and exit.
+            if ((!ns.getBoolean(BATCH)
+                    && (Objects.isNull(producerConfig.getTopic())
+                    || Objects.isNull(producerConfig.getConfigFilePath())))
+                    || Objects.isNull(payloadConfig.getTemplateFilePath())) {
+                System.out.println(translations.getString("runner.argsMissing"));
+                parser.printHelp();
+                System.exit(0);
+            }
+
+            if (producerConfig.getNumThreads() < 1) {
+                System.out.println(translations.getString("runner.invalidThreads"));
+                parser.printHelp();
+                System.exit(0);
+            }
+
+            if (producerConfig.getThroughput() == 0 || producerConfig.getThroughput() < -1) {
+                System.out.println(translations.getString("runner.invalidThroughput"));
+                parser.printHelp();
+                System.exit(0);
+            }
+
+            PayloadGenerator generator =
+                    new PayloadGenerator(payloadConfig, new FakeDate(new Date().getTime()));
+            logger.info("Generating messages");
+            BlockingQueue<String> messageQueue = new LinkedBlockingQueue<>();
+
+            boolean isBatch = ns.getBoolean(BATCH);
+
+            for (int i = 0; i < payloadConfig.getNumRecords(); i++) {
+                String generated = generator.generatePayload();
+                String flattened = new JSONObject(generated).toString();
+                if (isBatch) {
+                    System.out.println(flattened);
+                } else {
+                    messageQueue.add(flattened);
+                }
+                if (i % (payloadConfig.getNumRecords() / 10) == 0) {
+                    String progress = Double.valueOf((Integer.valueOf(i).floatValue() / payloadConfig.getNumRecords()) * 100).intValue() + "%";
+                    if (isBatch) {
+                        System.err.println(progress);
+                    }
+                    logger.info(progress);
+                }
+            }
+
+            if (isBatch) {
+                System.exit(0);
+            }
+
+            ThreadGroup producersGroup = new ThreadGroup("Producers");
+            logger.info("Starting {} producers to send messages", producerConfig.getNumThreads());
+            for (int i = 0; i < producerConfig.getNumThreads(); i++) {
+                ProducerThread producerThread =
+                        new ProducerThread(
+                                producersGroup,
+                                String.format("producer%d", i),
+                                producerConfig,
+                                payloadConfig,
+                                messageQueue);
+                producerThread.start();
+                producers.add(producerThread);
+            }
+        } catch (ArgumentParserException error) {
+            error.printStackTrace();
+            if (args.length == 0) {
+                parser.printHelp();
+                System.exit(0);
+            } else {
+                parser.handleError(error);
+                System.exit(1);
+            }
         }
-        System.exit(0);
-      }
-
-      // if one of the required arguments is missing, log and exit.
-      if ((!ns.getBoolean(BATCH)
-              && (Objects.isNull(producerConfig.getTopic())
-                  || Objects.isNull(producerConfig.getConfigFilePath())))
-          || Objects.isNull(payloadConfig.getTemplateFilePath())) {
-        System.out.println(translations.getString("runner.argsMissing"));
-        parser.printHelp();
-        System.exit(0);
-      }
-
-      if (producerConfig.getNumThreads() < 1) {
-        System.out.println(translations.getString("runner.invalidThreads"));
-        parser.printHelp();
-        System.exit(0);
-      }
-
-      if (producerConfig.getThroughput() == 0 || producerConfig.getThroughput() < -1) {
-        System.out.println(translations.getString("runner.invalidThroughput"));
-        parser.printHelp();
-        System.exit(0);
-      }
-
-      try {
-        PayloadGenerator generator = new PayloadGenerator(payloadConfig, null);
-        logger.info("Generating messages");
-        final LocalDateTime start = LocalDateTime.now();
-
-        LinkedBlockingQueue<String> messageQueue =
-            Stream.iterate(0, n -> n + 1)
-                .limit(payloadConfig.getNumRecords())
-                .parallel()
-                .map(
-                    i -> {
-                      AtomicReference<String> payload = new AtomicReference<>();
-                      try {
-                        synchronized (Thread.currentThread()) {
-                          payload.set(generator.generatePayload());
-                        }
-                      } catch (JsonGeneratorException | GenerationException | IOException e) {
-                        e.printStackTrace();
-                      }
-                      return payload.get();
-                    })
-                .filter(Objects::nonNull)
-                .collect(Collectors.toCollection(LinkedBlockingQueue::new));
-
-        Duration duration = Duration.between(start, LocalDateTime.now());
-
-        logger.info(
-            "Generated {} messages in {} seconds",
-            payloadConfig.getNumRecords(),
-            duration.getSeconds());
-
-        if (ns.getBoolean(BATCH)) {
-          messageQueue.stream().forEach(System.out::println);
-          System.exit(0);
-        }
-
-        ThreadGroup producersGroup = new ThreadGroup("Producers");
-        logger.info("Starting {} producers to send messages", producerConfig.getNumThreads());
-        for (int i = 0; i < producerConfig.getNumThreads(); i++) {
-          ProducerThread producerThread =
-              new ProducerThread(
-                  producersGroup,
-                  String.format("producer%d", i),
-                  producerConfig,
-                  payloadConfig,
-                  messageQueue);
-          producerThread.start();
-          producers.add(producerThread);
-        }
-      } catch (GenerationException e) {
-        e.printStackTrace();
-      }
-    } catch (ArgumentParserException error) {
-      error.printStackTrace();
-      if (args.length == 0) {
-        parser.printHelp();
-        System.exit(0);
-      } else {
-        parser.handleError(error);
-        System.exit(1);
-      }
     }
-  }
 }

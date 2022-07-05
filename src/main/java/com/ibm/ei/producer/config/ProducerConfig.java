@@ -1,8 +1,7 @@
 package com.ibm.ei.producer.config;
 
-import net.sourceforge.argparse4j.inf.Namespace;
-
 import java.util.Map;
+import net.sourceforge.argparse4j.inf.Namespace;
 
 public class ProducerConfig {
 

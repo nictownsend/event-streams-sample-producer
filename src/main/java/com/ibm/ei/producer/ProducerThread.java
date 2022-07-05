@@ -15,15 +15,14 @@
  */
 package com.ibm.ei.producer;
 
+import com.ibm.ei.producer.config.PayloadConfig;
+import com.ibm.ei.producer.config.ProducerConfig;
 import java.io.IOException;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-
-import com.ibm.ei.producer.config.PayloadConfig;
-import com.ibm.ei.producer.config.ProducerConfig;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.utils.Utils;
@@ -32,7 +31,7 @@ import org.slf4j.LoggerFactory;
 
 public class ProducerThread extends Thread {
 
-  private final LinkedBlockingQueue<String> messageQueue;
+  private final BlockingQueue<String> messageQueue;
   private final ProducerConfig producerConfig;
   private final PayloadConfig payloadConfig;
   private AtomicInteger numberRecordsSent = new AtomicInteger(0);
@@ -45,7 +44,7 @@ public class ProducerThread extends Thread {
       String threadName,
       ProducerConfig producerConfig,
       PayloadConfig payloadConfig,
-      LinkedBlockingQueue<String> messages) {
+      BlockingQueue<String> messages) {
     super(threadGroup, threadName);
     this.messageQueue = messages;
     this.producerConfig = producerConfig;

@@ -1,18 +1,6 @@
 {
-  "type": "object",
-  "properties": {
-    "ts": {
-       "enum": ["{{fake-datetime-sequential this}}"]
-    },
-    "url" : {
-      "enum": ["/home", "/closure", "/join-us"]
-    },
-    "customer_id": {
-      "enum": ["{{fake-int this 0 50}}"]
-    },
-    "txn_id": {
-      "enum": ["{{fake-uuid this}}"]
-    }
-  },
-  "required": ["ts", "url", "customer_id", "txn_id"]
+    "ts": "{{fake-datetime-sequential this}}",
+    "url" : "{{oneof "/home" "/closure" "/join-us"}}",
+    "customer_id": {{fake-int this 0 50}},
+    "txn_id": "{{fake-uuid this}}"
 }

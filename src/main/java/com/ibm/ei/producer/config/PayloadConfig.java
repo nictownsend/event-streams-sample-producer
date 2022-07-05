@@ -1,8 +1,7 @@
 package com.ibm.ei.producer.config;
 
-import net.sourceforge.argparse4j.inf.Namespace;
-
 import java.util.Map;
+import net.sourceforge.argparse4j.inf.Namespace;
 
 public class PayloadConfig {
   public static final String START_TIMESTAMP = "startTimestamp";
@@ -12,7 +11,6 @@ public class PayloadConfig {
 
   private String templateFilePath;
   private Integer numRecords;
-
 
   public static PayloadConfig createPayloadConfig(Namespace ns) {
     PayloadConfig config = new PayloadConfig();
