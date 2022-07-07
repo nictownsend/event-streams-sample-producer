@@ -11,6 +11,7 @@ import com.ibm.ei.producer.config.PayloadConfig;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import net.sourceforge.argparse4j.ArgumentParsers;
+import net.sourceforge.argparse4j.impl.Arguments;
 import net.sourceforge.argparse4j.inf.ArgumentGroup;
 import net.sourceforge.argparse4j.inf.ArgumentParser;
 import net.sourceforge.argparse4j.inf.MutuallyExclusiveGroup;
@@ -41,18 +42,18 @@ public class CLIArguments {
 
     propertiesFileSection
         .addArgument("-g", "--gen-config")
-        .action(net.sourceforge.argparse4j.impl.Arguments.storeTrue())
+        .action(Arguments.storeTrue())
         .required(false)
-        .type(net.sourceforge.argparse4j.impl.Arguments.booleanType())
+        .type(Arguments.booleanType())
         .dest(GEN_CONFIG)
         .help(translations.getString("runner.genConfig.help"));
 
     ArgumentGroup producerParams =
-        parser.addArgumentGroup(translations.getString("runner.requiredConfigSection"));
+        parser.addArgumentGroup(translations.getString("runner.producerConfigSection"));
 
     producerParams
         .addArgument("-t", "--topic")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(String.class)
         .dest(TOPIC)
@@ -60,7 +61,7 @@ public class CLIArguments {
 
     producerParams
         .addArgument("-c", "--producer-config")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(String.class)
         .setDefault(DEFAULT_PRODUCER_CONFIG)
@@ -69,7 +70,7 @@ public class CLIArguments {
 
     producerParams
         .addArgument("-T", "--throughput")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(Integer.class)
         .dest(THROUGHPUT)
@@ -78,7 +79,7 @@ public class CLIArguments {
 
     producerParams
         .addArgument("-x", "--num-threads")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(Integer.class)
         .dest(NUM_THREADS)
@@ -90,7 +91,7 @@ public class CLIArguments {
 
     generalConfig
         .addArgument("-n", "--num-records")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(Integer.class)
         .dest(NUM_RECORDS)
@@ -99,21 +100,21 @@ public class CLIArguments {
 
     generalConfig
         .addArgument("-b", "--batch")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.storeTrue())
         .required(false)
         .type(Boolean.class)
-        .dest(BATCH)
         .setDefault(false)
+        .dest(BATCH)
         .help(translations.getString("runner.batchMode.help"));
 
-    MutuallyExclusiveGroup payloadOptions =
+    ArgumentGroup payloadOptions =
         parser
-            .addMutuallyExclusiveGroup()
+            .addArgumentGroup("Payload configuration")
             .description(translations.getString("runner.payload.options"));
 
     payloadOptions
         .addArgument("-f", "--payload-template")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(String.class)
         .dest(PAYLOAD_TEMPLATE)
@@ -121,18 +122,28 @@ public class CLIArguments {
 
     payloadOptions
         .addArgument("-s", "--start-timestamp")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(String.class)
         .dest(PayloadConfig.START_TIMESTAMP)
         .help(translations.getString("runner.payloadStartTimestamp.help"));
 
-    payloadOptions
+    MutuallyExclusiveGroup dateRange = parser.addMutuallyExclusiveGroup("Date range");
+
+    dateRange
         .addArgument("-e", "--end-timestamp")
-        .action(net.sourceforge.argparse4j.impl.Arguments.store())
+        .action(Arguments.store())
         .required(false)
         .type(String.class)
         .dest(PayloadConfig.END_TIMESTAMP)
+        .help(translations.getString("runner.payloadEndTimestamp.help"));
+
+    dateRange
+        .addArgument("-i", "--interval")
+        .action(Arguments.store())
+        .required(false)
+        .type(Long.class)
+        .dest(PayloadConfig.TIMESTAMP_INTERVAL)
         .help(translations.getString("runner.payloadEndTimestamp.help"));
 
     return parser;

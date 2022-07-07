@@ -6,22 +6,10 @@ metadata:
 data:
   payload.hbs: |-
     {
-      "type": "object",
-      "properties": {
-        "ts": {
-          "enum": ["{{fake-datetime-sequential this}}"]
-        },
-        "url" : {
-          "enum": ["/home", "/closure", "/join-us"]
-        },
-        "customer_id": {
-          "enum": ["{{fake-int this 0 50}}"]
-        },
-        "txn_id": {
-          "enum": ["{{fake-uuid this}}"]
-        }
-      },
-      "required": ["ts", "url", "customer_id", "txn_id"]
+      "ts": "{{fake-datetime-sequential this}}",
+      "url" : "{{oneof "/home" "/closure" "/join-us"}}",
+      "customer_id": {{fake-int this 0 50}},
+       "txn_id": "{{fake-uuid this}}"
     }
 ---
 apiVersion: v1
@@ -53,17 +41,21 @@ spec:
               mountPath: /runtime/payload
             - name: producer-config
               mountPath: /runtime/config
+            - name: flink-input
+              mountPath: /opt/ibm/files
           env:
-            - name: TOPIC
-              value: txns
-            - name: NUM_THREADS
-              value: "10"
+#            - name: TOPIC
+#              value: txns
+#            - name: NUM_THREADS
+#              value: "10"
             - name: PAYLOAD_TEMPLATE
               value: /runtime/payload/payload.hbs
             - name: NUM_RECORDS
-              value: "10000"
-            - name: PRODUCER_CONFIG
-              value: /runtime/config/producer.config
+              value: "1000000"
+            - name: BATCH
+              value: "true"
+#            - name: PRODUCER_CONFIG
+#              value: /runtime/config/producer.config
           image: quay.io/nictownsend/kafka-sample-producer:1.0
           imagePullPolicy: Always
       restartPolicy: OnFailure
@@ -74,4 +66,7 @@ spec:
         - name: producer-config
           configMap:
             name: producer-config
+        - name: flink-input
+          persistentVolumeClaim:
+            claimName: flink-input-rwx
 ---

@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Objects;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,19 +23,48 @@ public class PayloadGenerator {
   private final Faker faker = new Faker();
   private final PayloadConfig config;
 
-  public PayloadGenerator(PayloadConfig config, FakeDate startFrom) {
+  public PayloadGenerator(PayloadConfig config) throws ParseException {
     this.config = config;
 
     TemplateLoader loader = new FileTemplateLoader("", "");
     this.handlebars = new Handlebars(loader);
+
+    String startTime = config.getStartTimestamp();
+    Date startDate = new Date();
+
+    if (Objects.nonNull(startTime)) {
+      startDate.setTime(PayloadConfig.TIMESTAMP_FORMAT.parse(startTime).getTime());
+    }
+
+    long interval = config.getTimestampInterval();
+
+    String endTime = config.getEndTimestamp();
+
+    if (Objects.nonNull(endTime)) {
+      Date end = new Date();
+      end.setTime(PayloadConfig.TIMESTAMP_FORMAT.parse(endTime).getTime());
+      long diff = (end.getTime() - startDate.getTime());
+      interval = diff / config.getNumRecords();
+    }
+
+    System.err.println(
+        "Generating "
+            + config.getNumRecords()
+            + " messages with interval = "
+            + interval
+            + ", startTime = "
+            + startDate.toString()
+            + ", endTime = "
+            + endTime);
+
+    FakeDate fixedStart = new FakeDate(startDate.getTime(), interval);
 
     handlebars.registerHelper(
         "fake-date-random",
         (o, options) -> {
           String start = options.param(0);
           String end = options.param(1);
-          SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy");
-          return timestamp(start, end, date);
+          return timestamp(start, end, PayloadConfig.DATE_FORMAT);
         });
 
     handlebars.registerHelper(
@@ -42,12 +72,11 @@ public class PayloadGenerator {
         (o, options) -> {
           String start = options.param(0);
           String end = options.param(1);
-          SimpleDateFormat date = new SimpleDateFormat("dd-MM-yyyy'T'HH:mm:ss");
-          return timestamp(start, end, date);
+          return timestamp(start, end, PayloadConfig.TIMESTAMP_FORMAT);
         });
 
     handlebars.registerHelper(
-        "fake-datetime-sequential", (o, options) -> timestamp(startFrom.getTime()));
+        "fake-datetime-sequential", (o, options) -> timestamp(fixedStart.getTime()));
 
     handlebars.registerHelper(
         "fake-int",

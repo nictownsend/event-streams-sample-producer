@@ -1,7 +1,7 @@
 #!/bin/bash
 TAG="${1:-1.0}"
-#TODO template in the repo and image tag
-mvn clean install
+#TODO template in the repo and image tag to the yaml
+mvn package
 docker build -t "localhost:5000/kafka-sample-producer:${TAG}" .
 docker tag "localhost:5000/kafka-sample-producer:${TAG}" "quay.io/nictownsend/kafka-sample-producer:${TAG}"
 docker push "quay.io/nictownsend/kafka-sample-producer:${TAG}"
