@@ -19,16 +19,16 @@ spec:
         - /bin/bash
         - -c
         - --
-        image: flink:1.15.0
+        image: flink
         imagePullPolicy: IfNotPresent
-        name: flink
+        name: flink-main-container
         volumeMounts:
         - mountPath: /opt/flink/connectors
           name: cache-volume
         - mountPath: /opt/flink/conf
           name: flink-config-volume
-        - mountPath: /opt/flink/files
-          name: flink-files
+        - name: flink-input
+          mountPath: /opt/flink/files
       volumes:
       - emptyDir: {}
         name: cache-volume
@@ -39,6 +39,6 @@ spec:
             path: flink-conf.yaml
           name: flink-sql-client
         name: flink-config-volume
-      - name: flink-files
+      - name: flink-input
         persistentVolumeClaim:
-          claimName: flink-input-rwx
+          claimName: flink-input

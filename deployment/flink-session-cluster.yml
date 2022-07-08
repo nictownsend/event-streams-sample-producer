@@ -7,7 +7,6 @@ spec:
     taskmanager.numberOfTaskSlots: '3'
     web.cancel.enable: 'true'
   flinkVersion: v1_15
-  image: 'flink:1.15'
   jobManager:
     replicas: 1
     resource:
@@ -20,13 +19,13 @@ spec:
       memory: 4096m
   podTemplate:
     spec:
-      volumes:
-        - name: flink-output
-          persistentVolumeClaim:
-            claimName: flink-input-rwx
       containers:
-        # Do not change the main container name
         - name: flink-main-container
           volumeMounts:
             - name: flink-input
               mountPath: /opt/flink/files
+          image: flink
+      volumes:
+        - name: flink-files
+          persistentVolumeClaim:
+            claimName: flink-input
