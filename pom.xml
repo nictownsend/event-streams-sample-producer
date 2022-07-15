@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.ibm.ei</groupId>
-	<artifactId>kafka-sample-runner</artifactId>
+	<artifactId>flink-workload-generator</artifactId>
 	<version>1.2.0</version>
 	<packaging>jar</packaging>
 
@@ -17,12 +17,12 @@
 	</properties>
 
 
-	<repositories>
-		<repository>
-			<id>jitpack.io</id>
-			<url>https://jitpack.io</url>
-		</repository>
-	</repositories>
+<!--	<repositories>-->
+<!--		<repository>-->
+<!--			<id>jitpack.io</id>-->
+<!--			<url>https://jitpack.io</url>-->
+<!--		</repository>-->
+<!--	</repositories>-->
 
 	<dependencies>
 		<dependency>
@@ -150,7 +150,7 @@
 							<descriptorRefs>
 								<descriptorRef>jar-with-dependencies</descriptorRef>
 							</descriptorRefs>
-							<finalName>kafka-sample-runner</finalName>
+							<finalName>flink-workload-generator</finalName>
 							<appendAssemblyId>false</appendAssemblyId>
 						</configuration>
 					</execution>

@@ -15,25 +15,25 @@
  */
 package com.ibm.ei.producer;
 
-import static com.ibm.ei.utils.CLIArguments.GEN_CONFIG;
+import static com.ibm.ei.utils.Configuration.BATCH_MODE;
+import static com.ibm.ei.utils.Configuration.GEN_CONFIG;
+import static com.ibm.ei.utils.Configuration.OUTPUT_PATH;
+import static com.ibm.ei.utils.Configuration.PRODUCER_CONFIG;
+import static com.ibm.ei.utils.Configuration.RUNTIME_MODE;
 
 import com.ibm.ei.producer.config.PayloadConfig;
 import com.ibm.ei.producer.config.ProducerConfig;
-import com.ibm.ei.utils.CLIArguments;
+import com.ibm.ei.utils.Configuration;
 import java.io.File;
 import java.io.IOException;
-import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
-import net.sourceforge.argparse4j.inf.ArgumentParser;
+import java.util.stream.Collectors;
 import net.sourceforge.argparse4j.inf.ArgumentParserException;
-import net.sourceforge.argparse4j.inf.Namespace;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.json.JSONObject;
@@ -46,72 +46,31 @@ public class Runner {
   private static final ResourceBundle translations =
       ResourceBundle.getBundle("MessageBundle", Locale.getDefault());
 
-  public static void main(String[] args) throws IOException, ParseException {
+  public static void main(String[] args) throws IOException {
 
-    ArgumentParser parser = CLIArguments.argParser();
     List<ProducerThread> producers = new ArrayList<>();
 
-    Thread gracefulEnd =
-        new Thread(
-            () -> {
-              final Integer totalCount =
-                  producers
-                      .stream()
-                      .map(ProducerThread::messageCount)
-                      .mapToInt(Integer::intValue)
-                      .sum();
-              logger.info(
-                  "Sent {} records in total across {} producers", totalCount, producers.size());
-            });
-
-    Runtime.getRuntime().addShutdownHook(gracefulEnd);
-
     try {
-      Namespace ns = parser.parseArgs(args);
+      Configuration runtimeArgs = new Configuration(args);
+      runtimeArgs.validate();
 
-      ProducerConfig producerConfig = ProducerConfig.createProducerConfig(ns);
-      producerConfig.overrideWithEnvVars(System.getenv());
+      ProducerConfig producerConfig = ProducerConfig.createProducerConfig(runtimeArgs);
+      PayloadConfig payloadConfig = PayloadConfig.createPayloadConfig(runtimeArgs);
 
-      PayloadConfig payloadConfig = PayloadConfig.createPayloadConfig(ns);
-      payloadConfig.overrideWithEnvVars(System.getenv());
+      boolean isBatch = runtimeArgs.getString(RUNTIME_MODE).equals(BATCH_MODE);
 
-      boolean isBatch =
-          Optional.ofNullable(System.getenv().get("BATCH"))
-              .map(b -> Boolean.valueOf(b))
-              .orElseGet(ns.get("BATCH"));
+      String batchOutputPath = runtimeArgs.getString(OUTPUT_PATH);
 
-      if (ns.getBoolean(GEN_CONFIG)) {
+      if (runtimeArgs.getBoolean(GEN_CONFIG)) {
         try {
           FileUtils.writeStringToFile(
-              new File("runner.config"),
+              new File(runtimeArgs.getString(PRODUCER_CONFIG)),
               IOUtils.resourceToString("/producer.config.template", null),
               "UTF-8");
           logger.info(translations.getString("runner.fileGenerated"));
         } catch (IOException exception) {
           logger.error(translations.getString("runner.fileGenerationFail"), exception);
         }
-        System.exit(0);
-      }
-
-      // if one of the required arguments is missing, log and exit.
-      if ((!isBatch
-              && (Objects.isNull(producerConfig.getTopic())
-                  || Objects.isNull(producerConfig.getConfigFilePath())))
-          || Objects.isNull(payloadConfig.getTemplateFilePath())) {
-        System.out.println(translations.getString("runner.argsMissing"));
-        parser.printHelp();
-        System.exit(0);
-      }
-
-      if (producerConfig.getNumThreads() < 1) {
-        System.out.println(translations.getString("runner.invalidThreads"));
-        parser.printHelp();
-        System.exit(0);
-      }
-
-      if (producerConfig.getThroughput() == 0 || producerConfig.getThroughput() < -1) {
-        System.out.println(translations.getString("runner.invalidThroughput"));
-        parser.printHelp();
         System.exit(0);
       }
 
@@ -122,27 +81,48 @@ public class Runner {
       for (int i = 0; i < payloadConfig.getNumRecords(); i++) {
         String generated = generator.generatePayload();
         String flattened = new JSONObject(generated).toString();
-        if (isBatch) {
-          System.out.println(flattened);
-        } else {
-          messageQueue.add(flattened);
-        }
+        messageQueue.add(flattened);
         if (i % (payloadConfig.getNumRecords() / 10) == 0) {
           String progress =
               Double.valueOf(
                           (Integer.valueOf(i).floatValue() / payloadConfig.getNumRecords()) * 100)
                       .intValue()
                   + "%";
-          if (isBatch) {
-            System.err.println(progress);
-          }
           logger.info(progress);
         }
       }
 
       if (isBatch) {
+        try {
+          final File output = new File(batchOutputPath);
+          FileUtils.writeStringToFile(
+              output,
+              messageQueue.stream().collect(Collectors.joining(System.lineSeparator())),
+              "UTF-8");
+          logger.info(
+              translations.getString("runner.outputGenerated"),
+              messageQueue.size(),
+              output.getAbsolutePath());
+        } catch (IOException exception) {
+          logger.error(translations.getString("runner.outputGenerationFail"), exception);
+        }
         System.exit(0);
       }
+
+      Thread gracefulEnd =
+          new Thread(
+              () -> {
+                final Integer totalCount =
+                    producers
+                        .stream()
+                        .map(ProducerThread::messageCount)
+                        .mapToInt(Integer::intValue)
+                        .sum();
+                logger.info(
+                    "Sent {} records in total across {} producers", totalCount, producers.size());
+              });
+
+      Runtime.getRuntime().addShutdownHook(gracefulEnd);
 
       ThreadGroup producersGroup = new ThreadGroup("Producers");
       logger.info("Starting {} producers to send messages", producerConfig.getNumThreads());
@@ -158,12 +138,11 @@ public class Runner {
         producers.add(producerThread);
       }
     } catch (ArgumentParserException error) {
-      error.printStackTrace();
+      logger.warn(error.getLocalizedMessage());
+      error.getParser().printHelp();
       if (args.length == 0) {
-        parser.printHelp();
         System.exit(0);
       } else {
-        parser.handleError(error);
         System.exit(1);
       }
     }

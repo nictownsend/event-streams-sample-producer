@@ -1,7 +1,11 @@
 package com.ibm.ei.producer.config;
 
-import java.util.Map;
-import net.sourceforge.argparse4j.inf.Namespace;
+import static com.ibm.ei.utils.Configuration.NUM_PRODUCERS;
+import static com.ibm.ei.utils.Configuration.PRODUCER_CONFIG;
+import static com.ibm.ei.utils.Configuration.THROUGHPUT;
+import static com.ibm.ei.utils.Configuration.TOPIC;
+
+import com.ibm.ei.utils.Configuration;
 
 public class ProducerConfig {
 
@@ -10,39 +14,17 @@ public class ProducerConfig {
   private Integer throughput;
   private String configFilePath;
 
-  public static final String TOPIC = "topic";
-  public static final String PRODUCER_CONFIG = "producerConfig";
-  public static final String THROUGHPUT = "throughput";
-  public static final String NUM_THREADS = "numThreads";
-
   private ProducerConfig() {}
 
-  public static ProducerConfig createProducerConfig(Namespace ns) {
+  public static ProducerConfig createProducerConfig(Configuration ns) {
     ProducerConfig config = new ProducerConfig();
 
     config.setTopic(ns.getString(TOPIC));
     config.setThroughput(ns.getInt(THROUGHPUT));
     config.setConfigFilePath(ns.getString(PRODUCER_CONFIG));
-    config.setNumThreads(ns.getInt(NUM_THREADS));
+    config.setNumThreads(ns.getInt(NUM_PRODUCERS));
 
     return config;
-  }
-
-  public ProducerConfig overrideWithEnvVars(Map<String, String> env) {
-    if (env.containsKey("TOPIC")) {
-      setTopic(env.get("TOPIC"));
-    }
-    if (env.containsKey("NUM_THREADS")) {
-      setNumThreads(Integer.parseInt(env.get("NUM_THREADS")));
-    }
-    if (env.containsKey("PRODUCER_CONFIG")) {
-      setConfigFilePath(env.get("PRODUCER_CONFIG"));
-    }
-    if (env.containsKey("THROUGHPUT")) {
-      setThroughput(Integer.parseInt(env.get("THROUGHPUT")));
-    }
-
-    return this;
   }
 
   public String getTopic() {

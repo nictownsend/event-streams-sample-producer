@@ -22,10 +22,24 @@ spec:
       containers:
         - name: flink-main-container
           volumeMounts:
-            - name: flink-input
+            - name: flink-files
               mountPath: /opt/flink/files
           image: flink
       volumes:
         - name: flink-files
           persistentVolumeClaim:
-            claimName: flink-input
+            claimName: flink-files
+---
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: flink-ui
+  labels:
+    app: session-cluster
+spec:
+  to:
+    kind: Service
+    name: session-cluster-rest
+    weight: 100
+  port:
+    targetPort: rest

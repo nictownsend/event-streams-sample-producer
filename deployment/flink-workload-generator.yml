@@ -15,25 +15,24 @@ spec:
               mountPath: /runtime/payload
             - name: producer-config
               mountPath: /runtime/config
-            - name: flink-input
+            - name: flink-files
               mountPath: /opt/flink/files
           env:
             - name: PAYLOAD_TEMPLATE
               value: /runtime/payload/payload.hbs
             - name: NUM_RECORDS
               value: "1000000"
-            # Configuration if sending to file
-            - name: BATCH
-              value: "true"
             # Configuration if sending to Kafka
-            - name: TOPIC
-              value: txns
-            - name: NUM_THREADS
-              value: "10"
-            - name: PRODUCER_CONFIG
-              value: /runtime/config/producer.config
-            - name: THROUGHPUT
-              value: "1"
+#            - name: TOPIC
+#              value: txns
+#            - name: NUM_THREADS
+#              value: "10"
+#            - name: PRODUCER_CONFIG
+#              value: /runtime/config/producer.config
+#            - name: THROUGHPUT
+#              value: "1"
+#            - name: RUNTIME_MODE
+#              value: "PRODUCER"
           image: workload-generator
           imagePullPolicy: Always
       restartPolicy: OnFailure
@@ -44,6 +43,6 @@ spec:
         - name: producer-config
           configMap:
             name: producer-config
-        - name: flink-input
+        - name: flink-files
           persistentVolumeClaim:
-            claimName: flink-input
+            claimName: flink-files

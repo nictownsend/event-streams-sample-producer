@@ -14,7 +14,7 @@ resources:
   - ./flink-session-cluster.yml
 images:
   - name: workload-generator
-    newName: <REPO>
+    newName: <IMAGE>
     newTag: <TAG>
   - name: flink
     newTag: "1.15"

@@ -1,123 +1,124 @@
-# kafka-sample-runner
+# Flink Workload Generator
 
-A sample workload runner for generating test data from a JSON schema on a Kafka topic.
+A sample workload runner for generating JSON messages onto a Kafka topic, or as a new line delimited file.
 
-Available as a Docker image at https://quay.io/repository/nictownsend/kafka-sample-runner
+Available as a Docker image at https://quay.io/repository/nictownsend/flink-workload-generator
 
-This runner takes a JSON Schema and will generate random messages that conform to the schema.
+This runner takes a JSON object with custom handlebars templates for generating field values.
 
 ## Building
 
 - Clone this project
 - Navigate to the root directory of the project and run the following command:
 
-   `mvn clean install`
+  `mvn package`
 
-- This will create a`kakfa-sample-runner.jar` file inside the `target` directory.
-
-## Producer Configuration
-
-Run `java -jar target/kakfa-sample-runner.jar --gen-config` to generate `runner.config`
-
-The following configuration options might be required:
-
-| Attribute                             | Description                                                                                                            |
-|  ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| `bootstrap.servers`                     | The addressed used by the runner application to connect to Kafka. |
-| `ssl.truststore.location`       | The location (path and filename) of the Kafka certificate. |
-| `ssl.truststore.password`       | The password of the Kafka certificate. |
-| `security.protocol`             | The security protocol to use for connections. e.g `SSL`, `SASL_SSL` |
-| `sasl.mechanism`              | The SASL mechanism to use for connections. e.g `SCRAM-SHA-512`, `SASL_PLAIN`   |
-| `sasl.jaas.config`            | The SASL configuration details. `org.apache.kafka.common.security.scram.ScramLoginModule required username="<username>" password="<password>";`, with the `<username>` and `<password>` replaced with the SCRAM credentials if using SCRAM. For Kafka 2019.4.2 and earlier this should be set to `org.apache.kafka.common.security.plain.PlainLoginModule required username="token" password="<password>";` with the `<password>` replaced by an API key.
-| `ssl.keystore.location`       | The location (path and filename) of the `user.p12` keystore file if using TLS credentials.   |
-| `ssl.keystore.password`       | The password for the keystore if using TLS credentials.   |
-
-## Payload templating
-
-A pure JSON schema can be used to generate entirely random data. However, for more useful test cases it is better to constrain the input with a JSON schema generated from a template.
-
-A payload can be generated in a two-step process:
-1. JSON schema template to produce a constrained JSON schema with Handlebars helpers
-2. JSON object generated from the schema
-    - using `enum` to restrict possible values
-    - using single `enum` with a Handlerbars helper to generate a single value
-    
-A new JSON schema will be generated for each payload - so for example, you can use `fake-int` with `enum` to create a field in the schema with a single value - but it will be unique each time the schema is generated.
-
-### Custom template functions
-
-| field type | helper | notes |
-| --- | --- | --- |
-| uuid | `{{fake-uuid this}}` |  |
-| timestamp |`{{fake-date-random this <after> <before>}}` | Random timestamp between the two dates. Date format: `dd-MM-yyyy` |
-|  |`{{fake-datetime-random this <after> <before>}}` | Random time between the two dates. Datetime format: `dd-M-yyyy'T'HH:mm:ss` |
-| | `{{fake-datetime-sequential this}}`| Next timestamp within the time range. If no time range supplied, increments time by 1s | 
-| int |`{{fake-int this <min> <max>}}` | |
-| double | `{{fake-double this <min> <max>}}`| | 
-| first name |`{{fake-firstName this}}` | |
-| last name |`{{fake-lastName this}}` | |
-| full name |`{{fake-fullName this}}` | | 
-
-### Example
-
-```
-{
-  "type": "object",
-  "properties": {
-    "date": {
-      "enum": ["{{faker-date this "21-06-2022" "24-06-2022"}}"]
-    },
-    "url" : {
-        "enum": ["/home", "/closure", "/join-us"]
-    },
-    "customer_id": {
-        "enum": ["{{faker-int this 0 50}}"]
-    },
-    "txn_id": {
-        "enum": ["{{faker-uuid this}}"]
-    }
-  },
-  "required": ["date", "url", "customer_id", "txn_id"]
-}
-```
-
-### Notes
-- `required` used to enforce fields to be generated. If a property is not marked as required, it is not guaranteed to be in a generated payload.
-- `enum` used with Handlebars to generate a fixed field in the schema
+- This will create a `flink-workload-generator.jar` file inside the `target` directory.
 
 ## Running
 
-```java -jar target/kakfa-sample-runner.jar <options>```
+```java -jar target/flink-workload-generator.jar <options>```
 
-###  Options
+### Options
 
-| Parameter             | Shorthand | Longhand              | Type     | Description                                                                                                                               | Default          |
-| --------------------- | --------- | --------------------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ---------------- |
-| Topic                 | -t        | --topic               | `string` | The name of the topic to produce to                                                                                                         | `60000`          |
-| Payload Template      | -f        | --payload-template    | `string` | File to read the message payloads from. This works only for UTF-8 encoded text files. Payloads will be read from this  file and a payload will be randomly selected when sending messages. |   |
-| Throughput            | -T        | --throughput          | `integer`| Throttle maximum message throughput to *approximately* *THROUGHPUT* messages per second. -1 means as fast as possible                     | `-1`             |                                                                         | `loadtest`       |
-| Num Records           | -n        | --num-records         | `integer`| The total number of messages to be sent (across all threads)     
-| Producer Config       | -c        | --runner-config     | `string` | Path to runner configuration file                                                                                                       | `runner.config`|
-| Num Threads           | -x        | --num-threads         | `integer`| The number of runner threads to run                                                                                                     | `1`              |
-| Start timestamp       | -s        | --start-timestamp          | `string`    | Timestamp to start generating messages from                                                                                |                  |
-| End timestamp         | -e        | --end-timestamp          | `string`    | Timestamp to generate messages until. Increments evenly for each message generated.                                                                      |                  |
-| Batch mode            | -b        | --batch        | `boolean`    | Write to console instead of Kafka.                                                                           |                  |
-| Help                  | -h        | --help                | `N/A`    | Lists the available parameters                                                                                                            |                  |
-| Gen Config            | -g        | --gen-config          | `boolean`    | Generates the configuration file required to run the tool                                                                                 |                  |
+| Parameter                | Shorthand | Longhand           | Type                  | Env Var            | Default           | Description                                                                                             |
+|--------------------------|-----------|--------------------|-----------------------|--------------------|-------------------|---------------------------------------------------------------------------------------------------------|
+| Help                     | -h        | --help             | `N/A`                 | `N/A`              | `N/A`             | Lists the available parameters                                                                          |
+| Generate producer config | -g        | --gen-config       | `boolean`             | `N/A`              | `false`           | Generates a producer config file                                                                        |
+| Runtime mode             | -m        | --mode             | `"BATCH", "PRODUCER"` | `RUNTIME_MODE`     | `BATCH`           | Write to either a file or to Kafka topic                                                                |
+|                          |           |                    |                       |                    |                   |                                                                                                         |
+| Producer config          | -c        | --producer-config  | `string`              | `PRODUCER_CONFIG`  | `producer.config` | Path to producer configuration file                                                                     |
+| Topic                    | -t        | --topic            | `string`              | `TOPIC`            | `N/A`             | The name of the topic to produce to                                                                     |
+| Number of producers      | -n        | --num-producers    | `integer`             | `NUM_PRODUCERS`    | `1`               | The number of producers to use                                                                          |
+| Throughput               | -T        | --throughput       | `integer`             | `THROUGHPUT`       | `-1`              | Throttle each producer to produce at most *THROUGHPUT* records per second. -1 means as fast as possible |
+|                          |           |                    |                       |                    |                   |                                                                                                         |
+| Output file              | -o        | --output-file      | `string`              | `OUTPUT-FILE`      | `output.txt`      | File to write generated messages to                                                                     |
+|                          |           |                    |                       |                    |                   |                                                                                                         |
+| Payload template         | -f        | --payload-template | `string`              | `PAYLOAD_TEMPLATE` | `payload.hbs`     | Path to the payload template file                                                                       |
+| Number of records        | -r        | --num-records      | `integer`             | `NUM_RECORDS`      | `100`             | Number of records to be generated (in batch mode) or to be sent in total across all producers           |
 
+## Payload templating
 
-### Environment Overrides for Docker/Kubernetes
+A template file will be used to generate JSON messages.
 
-Setting the following environment variables will override the value used for each parameter.
+### Example template
+```
+{
+ "ts": "{{fake-datetime this start="01-10-2020'T'13:00:05" end="02-10-2020'T'13:00:05"}}",
+ "url": "{{oneof "/home" "/closure" "/join-us"}}",
+ "customer_id": {{fake-int this end=1000000}},
+  "txn_id": "{{fake-uuid this}}"
+}
+```
 
-| Parameter             | Environment Variable |
-| --------------------- | -------------------- |
-| Throughput            | ES_THROUGHPUT        |
-| Num Records           | ES_NUM_RECORDS       |
-| Topic                 | ES_TOPIC             |
-| Num Threads           | ES_NUM_THREADS       |
-| Producer Config       | ES_PRODUCER_CONFIG   |
-| Payload Template      | ES_PAYLOAD_TEMPLATE  |
+This will generate sample messages that use the handlebars template functions to generate values. E.g:
+
+```
+{
+  "ts": "01-10-2020T15:00:15",
+  "url": "/home",
+  "customer_id": 1456,
+  "txn_id": "rt4-t553-gg33"
+}
+```
+
+### Custom template functions
+
+| field type | helper                                                                    | default values                                                                                  | notes                                                                                                                                                                                                                                                                                                                          |
+|------------|---------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| uuid       | `{{fake-uuid this}}`                                                      |                                                                                                 |                                                                                                                                                                                                                                                                                                                                |
+| timestamp  | `{{fake-date this <start=> <end=> <sequential=true> <id=> }}`             | `start: now`, `end: 1 hour from now`, `sequential: false`, `id: 0`                              | Generate a date between the two dates. Date format: `dd-MM-yyyy`.<br/>If using `sequential` then the date range will be distributed equally across all generated payloads. If you are using the helper multiple times in a payload, you can add a unique <id> to ensure each usage has its own sequence.                       |
+|            | `{{fake-datetime this <start=> <end=> <sequential=true> <id=> }}`         | `start: now`, `end: 1 hour from now`, `sequential: false`, `id: 0`                              | Random timestamp between two timestamps. Datetime format: `dd-M-yyyy'T'HH:mm:ss`.<br/>If using `sequential` then the timestamp range will be distributed equally across all generated payloads.  If you are using the helper multiple times in a payload, you can add a unique <id> to ensure each usage has its own sequence. |
+| int        | `{{fake-int this <min=> <max=> <sequential=true> <increment=>  <id=>}}`   | `min: Java Integer.min`, `max: Java Integer.max`, `sequential: false`, `increment: 1l`, `id: 0` | Random integer between two values (inclusive).<br/>If using `sequential` then the sequence will increase by the increment and restart if max is reached. If you are using the helper multiple times in a payload, you can add a unique <id> to ensure each usage has its own sequence.                                         |
+| long       | `{{fake-long this <min=> <max=> <sequential=true> <increment=> <id=>}}`   | `min: Java Long.min`, `max: Java Long.max`, `sequential: false`, `increment: 1`, `id: 0`        | Random long between two values (inclusive).<br/>If using `sequential` then the sequence will increase by the increment and restart if max is reached. If you are using the helper multiple times in a payload, you can add a unique <id> to ensure each usage has its own sequence.                                            |
+| double     | `{{fake-double this <min=> <max=> <sequential=true> <increment=> <id=>}}` | `min: Java Long.min`, `max: Java Long.max`, `sequential: false`, `increment: 1.0`, `id: 0`      | Random double between two values (inclusive) to 2 decimal places.<br/>If using `sequential` then the sequence will increase by the increment and restart if max is reached. If you are using the helper multiple times in a payload, you can add a unique <id> to ensure each usage has its own sequence.                      |
+| first name | `{{fake-firstName this}}`                                                 |                                                                                                 |                                                                                                                                                                                                                                                                                                                                |
+| last name  | `{{fake-lastName this}}`                                                  |                                                                                                 |                                                                                                                                                                                                                                                                                                                                |
+| full name  | `{{fake-fullName this}}`                                                  |                                                                                                 |                                                                                                                                                                                                                                                                                                                                |
+
+## Producer Configuration
+
+If you are running against a Kafka topic, you will need to generate a producer configuration file.
+
+Use `--gen-config` to generate a skeleton `producer.config` in the current directory. Edit to supply the required values for your Kafka cluster.
+
+## Consuming the output in a Flink SQL job
+
+### Kafka
+```
+create table <name> (<col> TYPE, ...) with ('connector' = 'kafka','topic' = '<topic>','properties.bootstrap.servers' = '<bootstrap>', 'properties.group.id' = '<group.id>','scan.startup.mode' = 'earliest-offset','format' = 'json');
+```
+
+### File
+```
+create table <name> (<col> TYPE, ...) with ('connector' = 'filesystem','path' = 'file:///<path-to-file>','format' = 'json');
+```
+*Note - the file must be available to read from both the Job manager and Task manager.*
+
+## Deploying on Openshift
+The `deployment` folder contains scripts to deploy a flink session cluster, a flink sql client, and the workload generator onto a k8s environment.
+
+Pre-req:
+- Install the flink k8s operator onto your Openshift - https://nightlies.apache.org/flink/flink-kubernetes-operator-docs-main/docs/try-flink-kubernetes-operator/quick-start/
+- Provide `anyuid` access to the default flink service account: `oc adm policy add-scc-to-user anyuid system:serviceaccount:flink`
+- Install `yq` v4 onto your machine
+- Edit `deployment/payload.hbs` to represent the required payload template and optionally `deployment/producer.config` if you are pointing to a Kafka cluster.
+- Create a rwx PVC named `flink-files` - this is shared across the workload generator and Flink to allow files generated in `batch` mode to be read using the `filesystem` connector.
+
+Usage: `./deploy.sh <REPO> <IMAGE> <TAG> <NAMESPACE>`
+ 
+Steps: 
+- Builds the JAR file
+- Builds and pushes a docker image to the repo
+- Deploys a flink cluster, sql client, and workload generator
+
+Params:
+- `<REPO>`: The docker repository (e.g `quay.io/myusername`)
+- `<IMAGE>`: Image name
+- `<TAG>`: Image tag
+- `<NAMESPACE>`: k8s ns to deploy into
+
+Note - add `web.cancel.enable: true` to the `flink-config-session-cluster/flink.conf` to enable cancelling jobs from the UI.
 
 ## License
 
